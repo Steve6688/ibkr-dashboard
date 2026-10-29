@@ -23,13 +23,36 @@ nav{position:sticky;top:0;z-index:5;background:rgba(245,245,247,.9);backdrop-fil
 .fade{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}.fade.in{opacity:1;transform:none}
 #top{position:fixed;right:20px;bottom:20px;border:1px solid var(--b);background:#fff;border-radius:99px;padding:8px 14px;cursor:pointer}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.fade{opacity:1;transform:none}}
+
+/* Mobile-first reading layout */
+:root{--bg:#f6f7f4;--card:#fff;--b:#dde4df;--t:#172e29;--m:#586b65;--g:#16745c;--a:#286b85;--r:#b34343}
+body{font:16px/1.65 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;overflow-wrap:anywhere}
+.wrap{max-width:680px;padding:22px 18px 70px}h1{font-size:18px;font-weight:650;letter-spacing:.02em;margin:0}h1 .pill{display:none}h2{font-size:21px}.cap{font-size:14px;line-height:1.7;color:var(--m)}
+.hero{min-height:calc(100svh - 74px);padding:20px 0 28px;display:flex;flex-direction:column;gap:14px}.hero-card{background:#fff;border:1px solid var(--b);border-radius:24px;padding:20px 22px}.recovery-card{display:flex;align-items:center;justify-content:center;gap:22px}.ring-wrap{position:relative;flex:0 0 156px;height:156px}.ring-wrap svg{display:block;width:100%;height:100%;transform:rotate(-90deg)}.ring-value{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}.ring-value strong{font-size:31px;letter-spacing:-1px;line-height:1.2}.ring-value span,.eyebrow{font-size:13px;color:var(--m)}.recovery-copy b{font-size:20px;display:block}.recovery-copy p{margin:5px 0 0;font-size:13px;color:var(--m)}
+.gap-card{background:#eaf3ed;border-color:#d4e6d9}.gap-number{font-size:clamp(40px,11vw,54px);font-weight:750;line-height:1.25;letter-spacing:-1.8px;font-variant-numeric:tabular-nums;margin:7px 0}.gap-card p{font-size:13px;margin:0;color:var(--m)}.today-card h2{font-size:18px;margin:0 0 8px}.today-card p{font-size:14px;margin:6px 0}.today-card a{color:var(--g);font-weight:650;font-size:14px;display:inline-block;padding:8px 0}.today-date{font-size:12px;color:var(--m)}
+.section-label{font-size:13px;color:var(--m);margin:6px 4px 14px;letter-spacing:.08em}.fold{border:1px solid var(--b);border-radius:18px;background:#fff;margin:12px 0;overflow:hidden}.fold>summary{cursor:pointer;list-style:none;padding:18px 20px;display:flex;align-items:center;gap:12px;min-height:74px}.fold>summary::-webkit-details-marker{display:none}.fold>summary::after{content:'+';margin-left:auto;font-size:24px;font-weight:400;color:var(--g)}.fold[open]>summary::after{content:'−'}.fold>summary b{display:block;font-size:17px}.fold>summary small{display:block;font-size:13px;font-weight:400;color:var(--m)}.fold[open]>summary{border-bottom:1px solid var(--b)}.fold>.card{margin:0;border:0;border-radius:0;box-shadow:none;padding:20px}.fold .card>h2:first-child{display:none}
+.grid,.g2,.g4{grid-template-columns:minmax(0,1fr);gap:12px}.grid>*{min-width:0}.m{padding:16px;border-radius:14px;background:#fafcf9}.m .l,.m .d{font-size:14px}.m .v{font-size:30px}.props div{flex-wrap:wrap;font-size:15px}.props b{font-variant-numeric:tabular-nums}.props span:first-child{max-width:100%}.callout{padding:14px;font-size:15px}.pill{font-size:12px}.legend{font-size:14px;gap:8px 14px}.legend span{max-width:100%}.seg{display:flex;width:100%;gap:2px}.seg button{flex:1;font-size:14px;padding:10px 4px;min-height:44px}.hb{grid-template-columns:88px minmax(24px,1fr) 104px;gap:6px;font-size:14px}.hb .meta,.row .meta{font-size:12px}.row{flex-wrap:wrap}.row .body{min-width:140px}.row .lead{min-width:36px}select{max-width:100%;min-height:46px;margin-top:8px}label{display:block}nav{position:static;backdrop-filter:none;background:none;margin:14px 0}nav a{font-size:13px;padding:7px 10px}table{font-size:14px}th,td{padding:11px 10px;white-space:nowrap}th{font-size:13px}.table-hint{color:var(--m);font-size:12px;margin:12px 0 4px}.table-scroll{overflow-x:auto;max-width:100%;border:1px solid var(--b);border-radius:12px}.table-scroll:focus-visible{outline:2px solid var(--g)}
+svg{max-width:100%;height:auto}#pie1,#pie2,#pie3{display:block;margin:0 auto 16px}#line{min-width:540px}#top{position:static;display:block;margin:26px auto 0;padding:12px 22px;font:inherit;color:var(--g)}.fade{opacity:1;transform:none;transition:none}.bar>div,.hb .t div{transition:none}[hidden]{display:none!important}a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible{outline:3px solid #286b85;outline-offset:3px}#daily-plans pre{overflow:auto;font-size:13px}#daily-plans article{padding:12px 0 20px}#daily-plans h3{font-size:19px}#daily-plans code{overflow-wrap:anywhere}section{scroll-margin-top:16px}
+@media(min-width:600px){.wrap{padding:30px 28px 70px}.hero{min-height:calc(100svh - 90px)}.hero-card{padding:24px 30px}.ring-wrap{flex-basis:176px;height:176px}.recovery-card{gap:42px}.gap-number{font-size:56px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style></head><body><div class="wrap">
 <h1 id="title">IBKR U1856**** 回本看板 <span class="pill">v5</span></h1>
+<main class="hero" aria-label="回本核心信息">
+<div class="hero-card recovery-card"><div class="ring-wrap"><svg viewBox="0 0 160 160" role="img" aria-label="回本收复进度 60.5%"><circle cx="80" cy="80" r="68" fill="none" stroke="#e8eeea" stroke-width="11"/><circle id="recovery-ring" cx="80" cy="80" r="68" fill="none" stroke="#16745c" stroke-width="11" stroke-linecap="round" stroke-dasharray="258.5 427.26"/></svg><div class="ring-value"><strong id="hero-progress">60.5%</strong><span>已收复</span></div></div><div class="recovery-copy"><b>回本进度</b><p>净值 / 累计净入金</p><p>止盈后推算口径<br>2026.10.29</p></div></div>
+<div class="hero-card gap-card"><div class="eyebrow">距离回本，还需要</div><div class="gap-number" id="hero-gap">$4,888.85</div><p>推算净值 $7,501.39 / 净入金 $12,390.24</p></div>
+<div class="hero-card today-card"><h2>今日计划</h2><div class="today-date" id="today-plan-date">正在读取 plans.json</div><p id="today-plan-title" aria-live="polite">正在加载最新交易计划…</p><p>执行前核对最新计划的前提与风控；历史卡片保留供对照。</p><a href="#daily-plans" id="read-plan">查看完整计划与执行条件 →</a></div>
+</main>
+<p class="section-label">按需展开 · 账户与交易明细</p><details class="fold"><summary><span><b>每日交易计划</b><small>最新计划、执行前提与完整原文</small></span></summary><section id="daily-plans" class="card"><h2>每日交易计划</h2><div id="daily-plans-list" aria-live="polite">正在加载交易计划…</div></section></details><details class="fold"><summary><span><b>风控铁律与账单教训</b><small>检查清单、风险红线与历史经验</small></span></summary><section id="risk" class="card fade"><h2>风控铁律</h2><div class="grid g2"><div class="chk">
+<div>✅ PDT 日内交易限制已解除 <span class="cap">可无限制 T+0</span></div><div>✅ VRT 括号单已止盈落袋 <span class="cap ok">+$99.34</span></div><div>✅ 六只底仓保持冻结 <span class="cap">回本不靠动仓</span></div><div>⬜ 副用户名 qczpc2026 待审批 <span class="cap">双登录</span></div></div>
+<div><div class="row"><div class="body"><b>Excess Liquidity 警戒</b><div class="cap" style="margin:0">盘中硬红线 ≥ $1,200；止盈前快照约 $1,799</div></div><span class="pill ok">守住</span></div><div class="row"><div class="body"><b>单笔止损</b><div class="cap" style="margin:0">机动单 ≤ -$50；绝不新开 2x ETF</div></div><span class="pill bad">硬规则</span></div><div class="row"><div class="body"><b>连损熔断</b><div class="cap" style="margin:0">当日连损 2 笔立即停手</div></div><span class="pill bad">硬规则</span></div></div></div>
+<hr style="border:0;border-top:1px solid var(--b);margin:16px 0"><p id="lesson">账单教训：1x 正股（META / GOOG / TSLA / DELL）历史胜率高；主要亏损来自 2x ETF 追高与死扛。回本路径 = 冻结底仓 + 小仓位正股滚动落袋。</p></section></details><details class="fold"><summary><span><b>今晚终审卡 · 历史快照</b><small>账户指标、三张交易卡、事件与风险校验</small></span></summary><section id="tonight" class="card fade"><h2>今晚终审卡</h2><div class="cap">来自 snapshot.json（生成于 2026-10-29 10:54 UTC+8）· 风险帽：新增维保 ≤ $<span id="rk1"></span> · 下单后 Excess ≥ $<span id="rk2"></span> · 单笔亏损 ≤ $<span id="rk3"></span> · 目标 +$<span id="rk4"></span></div>
+<div class="grid g4" id="acctM"></div>
+<p class="table-hint">左右滑动查看全部列或完整曲线</p><div class="table-scroll" tabindex="0" role="region" aria-label="可左右滑动查看完整数据"><table id="cardsT"><thead><tr><th>标的</th><th>方向</th><th>股数</th><th>限价</th><th>目标</th><th>止损</th><th>最大亏损</th><th>目标利润</th><th>R:R</th><th>新增维保</th><th>下单后 Excess</th><th>状态</th><th>风控终审</th></tr></thead><tbody></tbody></table></div>
+<div id="cardNotes" style="margin-top:10px"></div>
+<div class="grid g2" style="margin-top:10px"><div><b>今日事件</b><div id="events"></div></div><div><b>今日回本目标</b><div class="callout i" id="todayT" style="margin-top:6px"></div></div></div>
+</section></details><details class="fold"><summary><span><b>账户总览与数据来源</b><small>目标、净值、净入金与历史说明</small></span></summary><section id="overview" class="card fade">
 <div class="cap" id="summary">净入金对照净值、回本缺口与最近成交一屏看清。数据嵌入自官方活动报表与实盘快照；VRT 隔夜括号单已止盈。<br>来源：IBKR Activity Statement YTD (U1856****) · 实盘快照 2026-10-29 01:47 UTC+8（止盈前） · VRT 括号单成交与止盈（买 11@$235.84 → 卖 @$244.93） · snapshot.json（2026-10-29 10:54 UTC+8）</div>
-<nav><a href="#overview">总览</a><a href="#tonight">今晚终审</a><a href="#scenario">入金$6k情景</a><a href="#progress">回本进度</a><a href="#composition">盈亏构成</a><a href="#holdings">持仓</a><a href="#last-trade">VRT</a><a href="#plan">回本作战</a><a href="#risk">风控铁律</a><a href="#lesson">账单教训</a><a href="#daily-plans">每日交易计划</a></nav>
-
-<section id="overview" class="card fade">
-<p id="goal">目标：在不动现有 6 只底仓的前提下，用小仓位高确信日内/波段单把净值推回净入金线。PDT 已解除；副用户名 qczpc2026 待 IBKR 审批。</p>
+<nav><a href="#overview">总览</a><a href="#tonight">今晚终审</a><a href="#scenario">入金$6k情景</a><a href="#progress">回本进度</a><a href="#composition">盈亏构成</a><a href="#holdings">持仓</a><a href="#last-trade">VRT</a><a href="#plan">回本作战</a><a href="#risk">风控铁律</a><a href="#lesson">账单教训</a><a href="#daily-plans">每日交易计划</a></nav><p id="goal">目标：在不动现有 6 只底仓的前提下，用小仓位高确信日内/波段单把净值推回净入金线。PDT 已解除；副用户名 qczpc2026 待 IBKR 审批。</p>
 <div class="grid g4">
 <div class="m"><div class="l">推算净值 Net Liq</div><div class="v ok" data-n="netLiqEst"></div><div class="d">相对净入金已收复 <b data-p="progressPct"></b> · 止盈前快照 $7,418.67</div></div>
 <div class="m"><div class="l">累计净入金</div><div class="v" data-n="netDeposits"></div><div class="d">CNH + HKD + USD 共 15 笔</div></div>
@@ -37,9 +60,34 @@ nav{position:sticky;top:0;z-index:5;background:rgba(245,245,247,.9);backdrop-fil
 <div class="m"><div class="l">最近成交 · VRT</div><div class="v ok" data-n="vrtNet" data-plus="1"></div><div class="d">毛利 +$99.99 · 11 股 @$235.84 → @$244.93</div></div>
 </div>
 <div class="callout" style="margin-top:14px"><b>VRT 隔夜括号单已止盈落袋</b> — 买入 11 @ $235.84，止盈 $244.93 / 止损 $231.29 已成交止盈，毛利约 +$99.99（净约 +$99.34）。现有 SNXX / AAOX / DELL / QQQ / VOO / IBKR 六只持仓保持不动；回本靠新增小仓位高确信交易。</div>
-</section>
+</section></details><details class="fold"><summary><span><b>回本进度明细</b><small>柱状图、亏损属性与净入金线</small></span></summary><section id="progress" class="card fade"><h2>回本进度</h2><div class="cap">净值相对净入金的收复比例；缺口按止盈前快照 + VRT 止盈抬升推算</div>
+<div class="grid g2"><div><svg id="cols" viewBox="0 0 360 220" width="100%"></svg></div>
+<div class="props"><div><span>收复进度</span><b><span data-p="progressPct"></span> 净值 / 净入金</b></div><div><span>历史已实现（含 VRT 净利推算）</span><b class="bad" data-n="negRealized"></b></div><div><span>六只底仓未实现浮亏</span><b class="bad" data-n="negUnreal"></b></div><div><span>账户状态</span><span class="pill ok">PDT 已解除 · 副号审批中</span></div></div></div>
+<div style="margin-top:14px"><div class="legend"><span><i style="background:var(--g)"></i>推算净值 <span data-n="netLiqEst"></span></span><span><i style="background:#fca5a5"></i>推算缺口 <span data-n="gapEst"></span></span></div>
+<div style="display:flex;justify-content:space-between;font-size:12px;margin:6px 0"><span>通往净入金线 $12,390.24</span><b>已收复 <span data-p="progressPct"></span></b></div><div class="bar" id="sb1"></div></div></section></details><details class="fold"><summary><span><b>盈亏构成</b><small>缺口去向、已实现亏损与盈利贡献</small></span></summary><section id="composition" class="card fade"><h2>盈亏构成</h2>
+<div class="seg" id="seg"><button data-v="gap" class="on">缺口去向</button><button data-v="realized">已实现元凶</button><button data-v="winners">已实现功臣</button></div>
+<div id="v-gap" class="grid g2"><div><div class="cap">全口径缺口构成（止盈前口径）· 合计 -$4,972</div><svg id="pie1" viewBox="0 0 220 220" width="220"></svg><div class="legend" id="lg1"></div></div>
+<div><div class="cap">净入金去向（推算）· 合计 <span data-n="netDeposits"></span></div><svg id="pie2" viewBox="0 0 220 220" width="220"></svg><div class="legend" id="lg2"></div><div class="bar" id="sb2" style="margin-top:10px"></div></div></div>
+<div id="v-realized" hidden></div><div id="v-winners" hidden></div></section></details><details class="fold"><summary><span><b>现有持仓 · 六只底仓</b><small>市值分布、成本、现价与浮动盈亏</small></span></summary><section id="holdings" class="card fade"><h2>现有持仓（六只 · 不动）</h2><div class="cap">价格与盈亏沿用止盈前实盘快照；策略要求不触碰这些底仓</div>
+<div class="grid g2"><div><div class="cap">底仓市值分布 · 合计 $7,558</div><svg id="pie3" viewBox="0 0 220 220" width="220"></svg><div class="legend" id="lg3"></div></div>
+<div class="props"><div><span>底仓合计市值</span><b>$7,558.37</b></div><div><span>底仓未实现</span><b class="bad" data-n="negUnreal"></b></div><div><span>执行原则</span><span class="pill acc">底仓冻结 · 另开机动仓回本</span></div><div><span>副登录</span><b>qczpc2026 · 待 IBKR 审批</b></div></div></div>
+<p class="table-hint">左右滑动查看全部列或完整曲线</p><div class="table-scroll" tabindex="0" role="region" aria-label="可左右滑动查看完整数据"><table id="holdT"><thead><tr><th>标的</th><th>数量</th><th>成本</th><th>现价</th><th>市值</th><th>未实现</th><th>备注</th></tr></thead><tbody></tbody></table></div></section></details><details class="fold"><summary><span><b>最近成交 · VRT</b><small>买入、止盈与止损预案</small></span></summary><section id="last-trade" class="card fade"><h2>最近成交 · VRT 括号单</h2>
+<div class="row"><div class="lead">买入</div><div class="body"><b>11 股 VRT @ $235.84</b><div class="cap" style="margin:0">隔夜括号母单全部成交 · 名义本金 $2,594.24</div></div><div class="meta">FILLED</div><span class="pill ok">已成交</span></div>
+<div class="row"><div class="lead">止盈</div><div class="body"><b>卖出 11 股 @ $244.93</b><div class="cap" style="margin:0">毛利 +$99.99 · 净约 +$99.34</div></div><div class="meta">TP HIT</div><span class="pill ok">已止盈</span></div>
+<div class="row"><div class="lead">止损</div><div class="body"><b>预案 $231.29（未触发）</b><div class="cap" style="margin:0">最大风险原设 -$50.05 · 已被止盈单取消</div></div><div class="meta">CANCELLED</div><span class="pill warn">未触发</span></div></section></details><details class="fold"><summary><span><b>回本作战与目标推演</b><small>日均目标、交易日、曲线与四步执行</small></span></summary><section id="plan" class="card fade"><h2>回本作战</h2><p>不动六只底仓。用解除 PDT 后的机动资金做小仓位、高确信 1x 正股日内/波段，目标每日落袋现金填缺口。</p>
+<label>每日净利目标（用于推演周数）：<select id="dt"><option value="100">稳健 +$100 / 日</option><option value="120">标准 +$120 / 日</option><option value="150" selected>进取 +$150 / 日</option><option value="200">高频 +$200 / 日</option></select></label>
+<div class="grid g4" style="margin-top:12px"><div class="m"><div class="l">待填缺口</div><div class="v bad" data-n="gapEst"></div></div><div class="m"><div class="l">日均目标</div><div class="v ok" id="mT"></div></div><div class="m"><div class="l">预计交易日</div><div class="v" id="mD"></div><div class="d" id="mW"></div></div><div class="m"><div class="l">标的偏好</div><div class="v ok">1x 正股</div><div class="d">VRT / META / GOOG / DELL 类</div></div></div>
+<div class="legend" style="margin-top:14px"><span><i style="background:var(--a)"></i><span id="lnLbl"></span></span><span><i style="background:var(--r)"></i>净入金终点 $12,390</span></div>
+<p class="table-hint">左右滑动查看全部列或完整曲线</p><div class="table-scroll" tabindex="0" role="region" aria-label="可左右滑动查看完整数据"><svg id="line" viewBox="0 0 720 260" width="100%"></svg></div>
+<ol class="steps"><li><b>底仓冻结</b><br>SNXX、AAOX、DELL、QQQ、VOO、IBKR 全部不动，不做反 T、不割肉换股。</li><li><b>小仓位括号单</b><br>名义本金控制在约 $2,600 以内，1x 高流动性正股，盈亏比约 2:1，单笔止损 ≤ -$50。</li><li><b>日内落袋</b><br>优先完成 1～2 波高确信波段即停；连损 2 笔当日停手。尾盘前清掉新增机动敞口。</li><li><b>双登录就绪</b><br>主账户 U1856**** 交易；副用户名 qczpc2026 审批通过后用于并行看盘/下单。</li></ol></section></details><details class="fold"><summary><span><b>入金 $6,000 情景</b><small>两种净值口径的入金前后对照</small></span></summary><section id="scenario" class="card fade"><h2>入金 $6,000 情景</h2><div class="cap">纯情景推算：入金同时增加净值与净入金基数，美元缺口不变，收复比例上升。两个口径并列：旧看板推算净值 & snapshot 实盘净值。</div>
+<p class="table-hint">左右滑动查看全部列或完整曲线</p><div class="table-scroll" tabindex="0" role="region" aria-label="可左右滑动查看完整数据"><table id="scT"><thead><tr><th>口径</th><th>净入金</th><th>净值</th><th>回本缺口</th><th>收复进度</th></tr></thead><tbody></tbody></table></div>
+<div class="callout w" style="margin-top:12px" id="scNote"></div></section></details>
 
-<section id="daily-plans" class="card"><h2>每日交易计划</h2><div id="daily-plans-list" aria-live="polite">正在加载交易计划…</div></section>
+
+
+
+
+
 <style>#daily-plans article{border-top:1px solid var(--b);padding:18px 0}#daily-plans pre{white-space:pre-wrap}#daily-plans .table-wrap{overflow:auto}#daily-plans h3{margin:12px 0 6px}</style>
 <script>
 (()=>{
@@ -56,50 +104,21 @@ fetch('./plans.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(r.status)
 })();
 </script>
 
-<section id="tonight" class="card fade"><h2>今晚终审卡</h2><div class="cap">来自 snapshot.json（生成于 2026-10-29 10:54 UTC+8）· 风险帽：新增维保 ≤ $<span id="rk1"></span> · 下单后 Excess ≥ $<span id="rk2"></span> · 单笔亏损 ≤ $<span id="rk3"></span> · 目标 +$<span id="rk4"></span></div>
-<div class="grid g4" id="acctM"></div>
-<div style="overflow:auto;margin-top:14px"><table id="cardsT"><thead><tr><th>标的</th><th>方向</th><th>股数</th><th>限价</th><th>目标</th><th>止损</th><th>最大亏损</th><th>目标利润</th><th>R:R</th><th>新增维保</th><th>下单后 Excess</th><th>状态</th><th>风控终审</th></tr></thead><tbody></tbody></table></div>
-<div id="cardNotes" style="margin-top:10px"></div>
-<div class="grid g2" style="margin-top:10px"><div><b>今日事件</b><div id="events"></div></div><div><b>今日回本目标</b><div class="callout i" id="todayT" style="margin-top:6px"></div></div></div>
-</section>
 
-<section id="scenario" class="card fade"><h2>入金 $6,000 情景</h2><div class="cap">纯情景推算：入金同时增加净值与净入金基数，美元缺口不变，收复比例上升。两个口径并列：旧看板推算净值 & snapshot 实盘净值。</div>
-<div style="overflow:auto"><table id="scT"><thead><tr><th>口径</th><th>净入金</th><th>净值</th><th>回本缺口</th><th>收复进度</th></tr></thead><tbody></tbody></table></div>
-<div class="callout w" style="margin-top:12px" id="scNote"></div></section>
 
-<section id="progress" class="card fade"><h2>回本进度</h2><div class="cap">净值相对净入金的收复比例；缺口按止盈前快照 + VRT 止盈抬升推算</div>
-<div class="grid g2"><div><svg id="cols" viewBox="0 0 360 220" width="100%"></svg></div>
-<div class="props"><div><span>收复进度</span><b><span data-p="progressPct"></span> 净值 / 净入金</b></div><div><span>历史已实现（含 VRT 净利推算）</span><b class="bad" data-n="negRealized"></b></div><div><span>六只底仓未实现浮亏</span><b class="bad" data-n="negUnreal"></b></div><div><span>账户状态</span><span class="pill ok">PDT 已解除 · 副号审批中</span></div></div></div>
-<div style="margin-top:14px"><div class="legend"><span><i style="background:var(--g)"></i>推算净值 <span data-n="netLiqEst"></span></span><span><i style="background:#fca5a5"></i>推算缺口 <span data-n="gapEst"></span></span></div>
-<div style="display:flex;justify-content:space-between;font-size:12px;margin:6px 0"><span>通往净入金线 $12,390.24</span><b>已收复 <span data-p="progressPct"></span></b></div><div class="bar" id="sb1"></div></div></section>
 
-<section id="composition" class="card fade"><h2>盈亏构成</h2>
-<div class="seg" id="seg"><button data-v="gap" class="on">缺口去向</button><button data-v="realized">已实现元凶</button><button data-v="winners">已实现功臣</button></div>
-<div id="v-gap" class="grid g2"><div><div class="cap">全口径缺口构成（止盈前口径）· 合计 -$4,972</div><svg id="pie1" viewBox="0 0 220 220" width="220"></svg><div class="legend" id="lg1"></div></div>
-<div><div class="cap">净入金去向（推算）· 合计 <span data-n="netDeposits"></span></div><svg id="pie2" viewBox="0 0 220 220" width="220"></svg><div class="legend" id="lg2"></div><div class="bar" id="sb2" style="margin-top:10px"></div></div></div>
-<div id="v-realized" hidden></div><div id="v-winners" hidden></div></section>
 
-<section id="holdings" class="card fade"><h2>现有持仓（六只 · 不动）</h2><div class="cap">价格与盈亏沿用止盈前实盘快照；策略要求不触碰这些底仓</div>
-<div class="grid g2"><div><div class="cap">底仓市值分布 · 合计 $7,558</div><svg id="pie3" viewBox="0 0 220 220" width="220"></svg><div class="legend" id="lg3"></div></div>
-<div class="props"><div><span>底仓合计市值</span><b>$7,558.37</b></div><div><span>底仓未实现</span><b class="bad" data-n="negUnreal"></b></div><div><span>执行原则</span><span class="pill acc">底仓冻结 · 另开机动仓回本</span></div><div><span>副登录</span><b>qczpc2026 · 待 IBKR 审批</b></div></div></div>
-<div style="overflow:auto"><table id="holdT"><thead><tr><th>标的</th><th>数量</th><th>成本</th><th>现价</th><th>市值</th><th>未实现</th><th>备注</th></tr></thead><tbody></tbody></table></div></section>
 
-<section id="last-trade" class="card fade"><h2>最近成交 · VRT 括号单</h2>
-<div class="row"><div class="lead">买入</div><div class="body"><b>11 股 VRT @ $235.84</b><div class="cap" style="margin:0">隔夜括号母单全部成交 · 名义本金 $2,594.24</div></div><div class="meta">FILLED</div><span class="pill ok">已成交</span></div>
-<div class="row"><div class="lead">止盈</div><div class="body"><b>卖出 11 股 @ $244.93</b><div class="cap" style="margin:0">毛利 +$99.99 · 净约 +$99.34</div></div><div class="meta">TP HIT</div><span class="pill ok">已止盈</span></div>
-<div class="row"><div class="lead">止损</div><div class="body"><b>预案 $231.29（未触发）</b><div class="cap" style="margin:0">最大风险原设 -$50.05 · 已被止盈单取消</div></div><div class="meta">CANCELLED</div><span class="pill warn">未触发</span></div></section>
 
-<section id="plan" class="card fade"><h2>回本作战</h2><p>不动六只底仓。用解除 PDT 后的机动资金做小仓位、高确信 1x 正股日内/波段，目标每日落袋现金填缺口。</p>
-<label>每日净利目标（用于推演周数）：<select id="dt"><option value="100">稳健 +$100 / 日</option><option value="120">标准 +$120 / 日</option><option value="150" selected>进取 +$150 / 日</option><option value="200">高频 +$200 / 日</option></select></label>
-<div class="grid g4" style="margin-top:12px"><div class="m"><div class="l">待填缺口</div><div class="v bad" data-n="gapEst"></div></div><div class="m"><div class="l">日均目标</div><div class="v ok" id="mT"></div></div><div class="m"><div class="l">预计交易日</div><div class="v" id="mD"></div><div class="d" id="mW"></div></div><div class="m"><div class="l">标的偏好</div><div class="v ok">1x 正股</div><div class="d">VRT / META / GOOG / DELL 类</div></div></div>
-<div class="legend" style="margin-top:14px"><span><i style="background:var(--a)"></i><span id="lnLbl"></span></span><span><i style="background:var(--r)"></i>净入金终点 $12,390</span></div>
-<svg id="line" viewBox="0 0 720 260" width="100%"></svg>
-<ol class="steps"><li><b>底仓冻结</b><br>SNXX、AAOX、DELL、QQQ、VOO、IBKR 全部不动，不做反 T、不割肉换股。</li><li><b>小仓位括号单</b><br>名义本金控制在约 $2,600 以内，1x 高流动性正股，盈亏比约 2:1，单笔止损 ≤ -$50。</li><li><b>日内落袋</b><br>优先完成 1～2 波高确信波段即停；连损 2 笔当日停手。尾盘前清掉新增机动敞口。</li><li><b>双登录就绪</b><br>主账户 U1856**** 交易；副用户名 qczpc2026 审批通过后用于并行看盘/下单。</li></ol></section>
 
-<section id="risk" class="card fade"><h2>风控铁律</h2><div class="grid g2"><div class="chk">
-<div>✅ PDT 日内交易限制已解除 <span class="cap">可无限制 T+0</span></div><div>✅ VRT 括号单已止盈落袋 <span class="cap ok">+$99.34</span></div><div>✅ 六只底仓保持冻结 <span class="cap">回本不靠动仓</span></div><div>⬜ 副用户名 qczpc2026 待审批 <span class="cap">双登录</span></div></div>
-<div><div class="row"><div class="body"><b>Excess Liquidity 警戒</b><div class="cap" style="margin:0">盘中硬红线 ≥ $1,200；止盈前快照约 $1,799</div></div><span class="pill ok">守住</span></div><div class="row"><div class="body"><b>单笔止损</b><div class="cap" style="margin:0">机动单 ≤ -$50；绝不新开 2x ETF</div></div><span class="pill bad">硬规则</span></div><div class="row"><div class="body"><b>连损熔断</b><div class="cap" style="margin:0">当日连损 2 笔立即停手</div></div><span class="pill bad">硬规则</span></div></div></div>
-<hr style="border:0;border-top:1px solid var(--b);margin:16px 0"><p id="lesson">账单教训：1x 正股（META / GOOG / TSLA / DELL）历史胜率高；主要亏损来自 2x ETF 追高与死扛。回本路径 = 冻结底仓 + 小仓位正股滚动落袋。</p></section>
+
+
+
+
+
+
+
+
 <button id="top" onclick="scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})">回到顶部</button>
 </div>
 <script>
@@ -111,9 +130,11 @@ const gapLift=R(vrtGross-vrtU),netLiqEst=R(netLiqBeforeTp+gapLift),gapEst=R(netD
 const progressPct=Math.round(netLiqEst/netDeposits*1000)/10;
 const V={netLiqEst,netDeposits,negGap:-gapEst,gapEst,vrtNet,negRealized:-realizedEst,negUnreal:-unrealizedWithoutVrt};
 document.getElementById('lift').textContent=gapLift.toFixed(2);
-function count(el,to,f){if(RM){el.textContent=f(to);return}const t0=performance.now();(function s(t){const k=Math.min(1,(t-t0)/900),e=1-Math.pow(1-k,3);el.textContent=f(to*e);if(k<1)requestAnimationFrame(s);else el.textContent=f(to)})(t0)}
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');e.target.querySelectorAll('[data-n]').forEach(el=>{if(el.dataset.done)return;el.dataset.done=1;count(el,V[el.dataset.n],x=>fmt(x,el.dataset.plus))});e.target.querySelectorAll('[data-p]').forEach(el=>count(el,progressPct,x=>x.toFixed(1)+'%'));io.unobserve(e.target)}),{threshold:.08});
-document.querySelectorAll('.fade').forEach(s=>io.observe(s));
+document.querySelectorAll('[data-n]').forEach(el=>el.textContent=fmt(V[el.dataset.n],el.dataset.plus));
+document.querySelectorAll('[data-p]').forEach(el=>el.textContent=progressPct.toFixed(1)+'%');
+document.getElementById('hero-progress').textContent=progressPct.toFixed(1)+'%';
+document.getElementById('hero-gap').textContent=fmt(gapEst);
+document.getElementById('recovery-ring').setAttribute('stroke-dasharray',`${netLiqEst/netDeposits*427.26} 427.26`);
 const NS='http://www.w3.org/2000/svg',C=['#2563eb','#16a34a','#f59e0b','#dc2626','#8b5cf6','#06b6d4'];
 function pie(id,lg,parts){const s=document.getElementById(id);let a=-Math.PI/2,T=parts.reduce((x,p)=>x+p.v,0);parts.forEach((p,i)=>{const b=a+p.v/T*2*Math.PI,l=b-a>Math.PI?1:0,P=(r,t)=>[110+r*Math.cos(t),110+r*Math.sin(t)];const[x1,y1]=P(100,a),[x2,y2]=P(100,b),[x3,y3]=P(58,b),[x4,y4]=P(58,a);const e=document.createElementNS(NS,'path');e.setAttribute('d',`M${x1} ${y1}A100 100 0 ${l} 1 ${x2} ${y2}L${x3} ${y3}A58 58 0 ${l} 0 ${x4} ${y4}Z`);e.setAttribute('fill',p.c||C[i]);e.innerHTML=`<title>${p.l} ${p.d}</title>`;s.appendChild(e);a=b});document.getElementById(lg).innerHTML=parts.map((p,i)=>`<span><i style="background:${p.c||C[i]}"></i>${p.l} ${p.d}</span>`).join('')}
 pie('pie1','lg1',[{l:'AAOX 历史已实现',v:2483.61,d:'-$2,483.61'},{l:'SNXX 未实现',v:1137.86,d:'-$1,137.86'},{l:'AAOX 未实现',v:802.37,d:'-$802.37'},{l:'其余已实现净亏',v:547.73,d:'-$547.73'}]);
@@ -147,4 +168,16 @@ const RC=SNAP.recovery;document.getElementById('todayT').innerHTML=`目标 +$${R
 const DEP=6000,rows=[['旧看板推算净值',netLiqEst],['snapshot 实盘净值',A.net_liq]];
 document.querySelector('#scT tbody').innerHTML=rows.map(([n,nl])=>{const g0=R(netDeposits-nl),p0=nl/netDeposits*100,p1=(nl+DEP)/(netDeposits+DEP)*100;return `<tr><td>${n} · 入金前</td><td>${fmt(netDeposits)}</td><td>${fmt(nl)}</td><td class="bad">${fmt(-g0)}</td><td>${p0.toFixed(1)}%</td></tr><tr><td><b>${n} · 入金 $6k 后</b></td><td>${fmt(netDeposits+DEP)}</td><td>${fmt(nl+DEP)}</td><td class="bad">${fmt(-g0)}</td><td class="ok"><b>${p1.toFixed(1)}%</b></td></tr>`}).join('');
 document.getElementById('scNote').innerHTML=`注意：入金不是盈利，美元缺口不会因入金缩小；变化的是收复比例与可用保证金。入金后 Excess Liq / Buying Power 的精确值取决于 IBKR 保证金计算（含币种换汇），数据缺失 → 显示 —（约等于 Excess 现值 ${fmt(A.excess_liq)} + 入金，未经确认）。按 +$${K.target}/日 仍需 ${Math.ceil(gapEst/K.target)} 个交易日（推算口径）。`;
-</script></body></html>
+</script>
+<script>
+(()=>{
+function reveal(id){const target=document.getElementById(id);if(!target)return;let parent=target.closest('details');if(parent)parent.open=true;requestAnimationFrame(()=>target.scrollIntoView({behavior:'auto',block:'start'}));}
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>reveal(a.hash.slice(1))));
+if(location.hash)reveal(location.hash.slice(1));
+addEventListener('hashchange',()=>reveal(location.hash.slice(1)));
+const list=document.getElementById('daily-plans-list');
+function preview(){const article=list.querySelector('article');document.getElementById('today-plan-date').textContent=article?article.querySelector('.cap').textContent:'每日计划';document.getElementById('today-plan-title').textContent=article?article.querySelector('h3').textContent:list.textContent;}
+new MutationObserver(preview).observe(list,{childList:true,subtree:true});preview();
+})();
+</script>
+</body></html>
