@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-30T15:27:09+08:00",
+  "generated_at": "2026-10-30T15:37:38+08:00",
   "account": {
     "id": "U1856****",
-    "net_liq": 6992.53,
+    "net_liq": 6992.7,
     "excess_liq": 4812.25,
-    "buying_power": 18933.01,
+    "buying_power": 18933.04,
     "cash": 3477.85,
-    "maint_margin": 2177.51,
+    "maint_margin": 2177.67,
     "today_pnl": null,
     "pdt_cancelled": null
   },
@@ -20,27 +20,27 @@
     {
       "symbol": "AAOX",
       "qty": 100,
-      "mv": 432.000015
+      "mv": 430.999995
     },
     {
       "symbol": "IBKR",
       "qty": 0.5271,
-      "mv": 42.45790661
+      "mv": 42.52642816
     },
     {
       "symbol": "QQQ",
       "qty": 1.3404,
-      "mv": 939.74107199
+      "mv": 939.82149271
     },
     {
       "symbol": "SNXX",
       "qty": 220,
-      "mv": 1927.200055
+      "mv": 1925
     },
     {
       "symbol": "VOO",
       "qty": 0.2818,
-      "mv": 197.64042312
+      "mv": 197.59816344
     }
   ],
   "events": [
