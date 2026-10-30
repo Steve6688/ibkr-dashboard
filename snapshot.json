@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-10-29T10:54:35.224509+08:00",
+  "generated_at": "2026-10-30T15:27:09+08:00",
   "account": {
     "id": "U1856****",
-    "net_liq": 7407.36,
-    "excess_liq": 2006.52,
-    "buying_power": 7196.48,
-    "cash": -186.01,
-    "maint_margin": 5399.09,
-    "today_pnl": 426.2,
-    "pdt_cancelled": true
+    "net_liq": 6992.53,
+    "excess_liq": 4812.25,
+    "buying_power": 18933.01,
+    "cash": 3477.85,
+    "maint_margin": 2177.51,
+    "today_pnl": null,
+    "pdt_cancelled": null
   },
   "recovery": {
     "realized_today_usd": 100.0,
@@ -18,34 +18,29 @@
   },
   "holdings_readonly": [
     {
-      "symbol": "SNXX",
-      "qty": 330,
-      "mv": 3307.89
-    },
-    {
       "symbol": "AAOX",
-      "qty": 400,
-      "mv": 2048.0
-    },
-    {
-      "symbol": "DELL",
-      "qty": 2,
-      "mv": 991.73
-    },
-    {
-      "symbol": "QQQ",
-      "qty": 1.3404,
-      "mv": 967.57
-    },
-    {
-      "symbol": "VOO",
-      "qty": 0.2818,
-      "mv": 199.71
+      "qty": 100,
+      "mv": 432.000015
     },
     {
       "symbol": "IBKR",
       "qty": 0.5271,
-      "mv": 43.47
+      "mv": 42.45790661
+    },
+    {
+      "symbol": "QQQ",
+      "qty": 1.3404,
+      "mv": 939.74107199
+    },
+    {
+      "symbol": "SNXX",
+      "qty": 220,
+      "mv": 1927.200055
+    },
+    {
+      "symbol": "VOO",
+      "qty": 0.2818,
+      "mv": 197.64042312
     }
   ],
   "events": [
