@@ -1,0 +1,66 @@
+{
+  "start_date": "2026-10-30",
+  "end_date": "2026-12-30",
+  "currency": "USD",
+  "target_net_profit": 2000,
+  "status": "pending",
+  "updated_at": null,
+  "weeks": [
+    {
+      "start_date": "2026-10-30",
+      "end_date": "2026-11-05",
+      "target": 250,
+      "net_profit": 0,
+      "status": "pending"
+    },
+    {
+      "start_date": "2026-11-06",
+      "end_date": "2026-11-12",
+      "target": 250,
+      "net_profit": 0,
+      "status": "pending"
+    },
+    {
+      "start_date": "2026-11-13",
+      "end_date": "2026-11-19",
+      "target": 250,
+      "net_profit": 0,
+      "status": "pending"
+    },
+    {
+      "start_date": "2026-11-20",
+      "end_date": "2026-11-26",
+      "target": 250,
+      "net_profit": 0,
+      "status": "pending"
+    },
+    {
+      "start_date": "2026-11-27",
+      "end_date": "2026-12-03",
+      "target": 250,
+      "net_profit": 0,
+      "status": "pending"
+    },
+    {
+      "start_date": "2026-12-04",
+      "end_date": "2026-12-10",
+      "target": 250,
+      "net_profit": 0,
+      "status": "pending"
+    },
+    {
+      "start_date": "2026-12-11",
+      "end_date": "2026-12-17",
+      "target": 250,
+      "net_profit": 0,
+      "status": "pending"
+    },
+    {
+      "start_date": "2026-12-18",
+      "end_date": "2026-12-24",
+      "target": 250,
+      "net_profit": 0,
+      "status": "pending"
+    }
+  ]
+}
