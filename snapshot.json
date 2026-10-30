@@ -8,7 +8,11 @@
     "cash": 3477.85,
     "maint_margin": 2177.5,
     "today_pnl": -249.77,
-    "pdt_cancelled": null
+    "pdt_cancelled": null,
+    "gross_position_value": 3511.89,
+    "equity_with_loan_value": 6939.39,
+    "available_funds": 4733.25,
+    "initial_margin": 2206.14
   },
   "recovery": {
     "realized_today_usd": 100.0,
@@ -20,27 +24,52 @@
     {
       "symbol": "AAOX",
       "qty": 100,
-      "mv": 430.00002
+      "mv": 430.00002,
+      "last": 4.3000002,
+      "avg": 7.1259325,
+      "upnl": -282.59323,
+      "dpnl": -79.99998,
+      "asset": "STK"
     },
     {
       "symbol": "IBKR",
       "qty": 0.5271,
-      "mv": 42.52642816
+      "mv": 42.52642816,
+      "last": 80.6800003,
+      "avg": 87.22614305,
+      "upnl": -3.45047184,
+      "dpnl": -0.57453884,
+      "asset": "STK"
     },
     {
       "symbol": "QQQ",
       "qty": 1.3404,
-      "mv": 939.60698293
+      "mv": 939.60698293,
+      "last": 700.98999025,
+      "avg": 741.25037302,
+      "upnl": -53.96501707,
+      "dpnl": -19.23475307,
+      "asset": "STK"
     },
     {
       "symbol": "SNXX",
       "qty": 220,
-      "mv": 1911.799912
+      "mv": 1911.799912,
+      "last": 8.6899996,
+      "avg": 12.79524333,
+      "upnl": -903.15362135,
+      "dpnl": -138.600088,
+      "asset": "STK"
     },
     {
       "symbol": "VOO",
       "qty": 0.2818,
-      "mv": 197.58970118
+      "mv": 197.58970118,
+      "last": 701.1699829,
+      "avg": 713.9953868,
+      "upnl": -3.61419882,
+      "dpnl": -1.73307482,
+      "asset": "STK"
     }
   ],
   "events": [
