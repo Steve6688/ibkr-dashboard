@@ -3,7 +3,122 @@ const $=id=>document.getElementById(id), money=n=>n===null?'—':'$'+Number(n).t
 const sign=n=>n===null?'—':(n>0?'+':n<0?'−':'')+Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 function node(tag,text,cls){const e=document.createElement(tag);e.textContent=text;if(cls)e.className=cls;return e}
 const titles={overview:'总览',holdings:'持仓',trades:'交易',plan:'计划',account:'账户'};
-document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.page').forEach(p=>p.hidden=p.id!==b.dataset.page);document.querySelectorAll('[data-page]').forEach(t=>t.setAttribute('aria-selected',String(t===b)));$('heading').textContent=titles[b.dataset.page];window.scrollTo(0,0)}));
+// One selection path for pointer scrubbing, ordinary clicks and keyboard activation.
+const tabBar=document.querySelector('.tabs');
+const tabButtons=[...tabBar.querySelectorAll('[data-page]')];
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+const tabPill=document.createElement('span');
+tabPill.className='tab-pill';
+tabPill.setAttribute('aria-hidden','true');
+tabBar.prepend(tabPill);
+let selectedTab=tabButtons.find(b=>b.getAttribute('aria-selected')==='true')||tabButtons[0];
+let tabGesture=null, suppressedClick=null;
+const pageAnimations=new WeakMap(), iconAnimations=new WeakMap();
+function pillAt(x){
+ tabPill.style.transform='translateX('+x+'px)';
+}
+function tabGeometry(){
+ const bar=tabBar.getBoundingClientRect();
+ return tabButtons.map(b=>{const r=b.getBoundingClientRect();return {button:b,left:r.left-bar.left-tabBar.clientLeft,width:r.width}});
+}
+function snapPill(){
+ const g=tabGeometry().find(g=>g.button===selectedTab);
+ tabPill.style.width=g.width+'px';
+ pillAt(g.left);
+}
+function selectTab(button){
+ if(button===selectedTab)return;
+ selectedTab=button;
+ document.querySelectorAll('.page').forEach(p=>{
+  const old=pageAnimations.get(p);if(old)old.cancel();
+  p.hidden=p.id!==button.dataset.page;
+  if(!p.hidden&&!reduceMotion.matches){
+   pageAnimations.set(p,p.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,easing:'cubic-bezier(.2,.7,.2,1)'}));
+  }
+ });
+ tabButtons.forEach(t=>t.setAttribute('aria-selected',String(t===button)));
+ $('heading').textContent=titles[button.dataset.page];
+ window.scrollTo(0,0);
+ const icon=button.querySelector('svg'),old=iconAnimations.get(icon);
+ if(old)old.cancel();
+ if(!reduceMotion.matches)iconAnimations.set(icon,icon.animate([
+  {transform:'translateY(0) scale(1)'},{transform:'translateY(-3px) scale(1.1)',offset:.45},{transform:'translateY(0) scale(1)'}
+ ],{duration:280,easing:'cubic-bezier(.2,.8,.3,1)'}));
+ if(!tabGesture)snapPill();
+}
+function scrubTab(clientX){
+ const geometry=tabGeometry(),bar=tabBar.getBoundingClientRect();
+ const x=clientX-bar.left-tabBar.clientLeft;
+ const nearest=geometry.reduce((a,b)=>Math.abs(x-a.left-a.width/2)<Math.abs(x-b.left-b.width/2)?a:b);
+ selectTab(nearest.button);
+ const width=nearest.width;
+ tabPill.style.width=width+'px';
+ pillAt(Math.max(geometry[0].left,Math.min(geometry.at(-1).left,x-width/2)));
+}
+tabBar.addEventListener('pointerdown',e=>{
+ if(tabGesture||!e.isPrimary||e.button!==0)return;
+ suppressedClick=null;
+ tabGesture={id:e.pointerId};
+ tabBar.setPointerCapture(e.pointerId);
+ tabBar.classList.add('is-dragging');
+ scrubTab(e.clientX);
+});
+tabBar.addEventListener('pointermove',e=>{
+ if(tabGesture?.id!==e.pointerId)return;
+ e.preventDefault();
+ scrubTab(e.clientX);
+});
+function finishTabGesture(e){
+ if(tabGesture?.id!==e.pointerId)return;
+ if(e.type==='pointerup')scrubTab(e.clientX);
+ suppressedClick={id:e.pointerId,until:performance.now()+700};
+ tabGesture=null;
+ tabBar.classList.remove('is-dragging');
+ if(tabBar.hasPointerCapture(e.pointerId))tabBar.releasePointerCapture(e.pointerId);
+ snapPill();
+}
+tabBar.addEventListener('pointerup',finishTabGesture);
+tabBar.addEventListener('pointercancel',finishTabGesture);
+tabBar.addEventListener('lostpointercapture',finishTabGesture);
+tabBar.addEventListener('click',e=>{
+ // Pointer selection already happened; retain keyboard and programmatic clicks.
+ if(e.detail>0&&suppressedClick&&performance.now()<suppressedClick.until){
+  e.preventDefault();e.stopPropagation();suppressedClick=null;return;
+ }
+ const button=e.target.closest('[data-page]');
+ if(button&&tabBar.contains(button))selectTab(button);
+});
+new ResizeObserver(()=>{
+ tabBar.classList.remove('is-dragging');
+ snapPill();
+ if(tabGesture)tabBar.classList.add('is-dragging');
+}).observe(tabBar);
+snapPill();
+
+// Delegated press feedback covers asynchronously loaded cards without replacing clicks.
+const presses=new Map();
+document.addEventListener('pointerdown',e=>{
+ if(!e.isPrimary||e.button!==0||e.target.closest('.tabs'))return;
+ const target=e.target.closest('button,summary,.legend-row,.card');
+ if(!target||target.disabled)return;
+ presses.set(e.pointerId,{target,x:e.clientX,y:e.clientY});
+ target.classList.add('is-pressed');
+},{passive:true});
+function releasePress(e){
+ const press=presses.get(e.pointerId);
+ if(press){press.target.classList.remove('is-pressed');presses.delete(e.pointerId)}
+}
+document.addEventListener('pointermove',e=>{
+ const press=presses.get(e.pointerId);
+ if(press&&Math.hypot(e.clientX-press.x,e.clientY-press.y)>10)releasePress(e);
+},{passive:true});
+document.addEventListener('pointerup',releasePress,{passive:true});
+document.addEventListener('pointercancel',releasePress,{passive:true});
+window.addEventListener('blur',()=>{
+ for(const {target} of presses.values())target.classList.remove('is-pressed');
+ presses.clear();
+ if(tabGesture)finishTabGesture({pointerId:tabGesture.id,type:'pointercancel'});
+});
 $('more').onclick=()=>document.querySelector('[data-page=account]').click();
 function logo(sym){const pal=['#3478ed','#e0782b','#7a4fd0','#1d9a8a','#c2417a'];const f=node('i',sym[0],'logo-fallback');f.style.background=pal[sym.charCodeAt(0)%pal.length];const img=document.createElement('img');img.className='logo';img.alt=sym+' logo';img.width=32;img.height=32;img.src='logos/'+sym+'.png';img.onerror=()=>img.replaceWith(f);return img}
 async function json(path){const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw Error(path+' 数据不可用');return r.json()}
