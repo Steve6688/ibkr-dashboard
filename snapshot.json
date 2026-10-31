@@ -119,8 +119,9 @@
   "risk": {
     "max_new_maint": 800,
     "min_excess_after": 1200,
-    "max_loss": 55,
-    "target": 100
+    "max_loss": 60,
+    "target": 100,
+    "risk_unit": 30
   },
   "cards": [
     {
