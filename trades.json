@@ -575,7 +575,8 @@
       "net_amount": 49.99374237,
       "realized_pnl": 0,
       "order_id": 0,
-      "tif": null
+      "tif": null,
+      "owner": "user"
     },
     {
       "trade_id": "0001ebba.6ae44810.01.01",
@@ -596,7 +597,8 @@
       "commission": 0.34886,
       "net_amount": 695,
       "realized_pnl": 0,
-      "order_id": 1140042303
+      "order_id": 1140042303,
+      "owner": "user"
     },
     {
       "trade_id": "00012971.6ae56d48.01.01",
@@ -617,7 +619,8 @@
       "commission": 0.350359,
       "net_amount": 345.4975,
       "realized_pnl": 0,
-      "order_id": 1140041810
+      "order_id": 1140041810,
+      "owner": "user"
     },
     {
       "trade_id": "00010193.6ae53def.01.01",
