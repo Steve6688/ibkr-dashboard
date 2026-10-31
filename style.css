@@ -33,3 +33,6 @@
 /* FIX9b: donut tap highlight */.src-donut .seg{cursor:pointer;transition:transform .2s ease,stroke-width .2s ease,opacity .2s ease;transform-box:view-box}.src-donut.has-sel .seg{opacity:.4}.src-donut.has-sel .seg.sel{opacity:1;stroke-width:21}.src-legend .legend-row{min-height:44px;cursor:pointer;border-radius:10px;transition:background .2s ease,opacity .2s ease}.src-legend .legend-row.sel{background:#f2f3f6}.src-legend:has(.sel) .legend-row:not(.sel){opacity:.55}.donut-center{pointer-events:none}.donut-center small{max-width:110px;text-align:center}@media (prefers-reduced-motion:reduce){.src-donut .seg,.src-legend .legend-row{transition:none}}
 
 /* FIX10: selected segment keeps its color */.src-donut.has-sel .seg{opacity:.35}.src-donut.has-sel .seg.sel{opacity:1;stroke-width:21;filter:saturate(1.3) brightness(.88)}.src-donut .seg{transition:transform .2s ease,stroke-width .2s ease,opacity .2s ease,filter .2s ease}@media (prefers-reduced-motion:reduce){.src-donut .seg{transition:none}}
+
+/* Account cards flow without reserved cells or doubled margins. */
+#account{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}#account>.card,#account>.section-heading{margin:0}#account>.card+.section-heading{margin-top:11px}
