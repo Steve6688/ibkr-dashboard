@@ -2,7 +2,7 @@
 const $=id=>document.getElementById(id), money=n=>n===null?'—':'$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 const sign=n=>n===null?'—':(n>0?'+':n<0?'−':'')+Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 function node(tag,text,cls){const e=document.createElement(tag);e.textContent=text;if(cls)e.className=cls;return e}
-const titles={overview:'总览',holdings:'持仓',trades:'交易',plan:'计划',account:'账户'};
+const titles={overview:'总览',holdings:'持仓',trades:'交易',plan:'计划',workflow:'工作流',account:'账户'};
 // One selection path for pointer scrubbing, ordinary clicks and keyboard activation.
 const tabBar=document.querySelector('.tabs');
 const tabButtons=[...tabBar.querySelectorAll('[data-page]')];
@@ -94,6 +94,14 @@ new ResizeObserver(()=>{
  if(tabGesture)tabBar.classList.add('is-dragging');
 }).observe(tabBar);
 snapPill();
+document.addEventListener('click',e=>{
+ const link=e.target.closest('[data-goto]');if(!link)return;
+ const button=tabButtons.find(b=>b.dataset.page===link.dataset.goto);if(!button)return;
+ selectTab(button);
+ if(link.dataset.target){const target=$(link.dataset.target);if(target){if(target.tagName==='DETAILS')target.open=true;target.scrollIntoView({block:'start'});}}
+});
+function openHash(){const name=location.hash.slice(1);const button=tabButtons.find(b=>b.dataset.page===name);if(button)selectTab(button)}
+window.addEventListener('hashchange',openHash);openHash();
 
 // Delegated press feedback covers asynchronously loaded cards without replacing clicks.
 const presses=new Map();
