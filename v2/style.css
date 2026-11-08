@@ -19,3 +19,96 @@ button,input,a{font:inherit}button{cursor:pointer}a{color:inherit;text-decoratio
 @media(max-width:620px){.content{padding:4px 15px 22px}.topbar{height:65px;padding:0 16px}.page-intro{padding:19px 2px 16px}.page-intro h1{font-size:24px}.page-intro .live-chip{font-size:9px;padding:6px 8px}.brand-icon{width:32px;height:32px;font-size:21px}.brand-text{font-size:12px;letter-spacing:1.5px}.brand-text small{font-size:7px;letter-spacing:1.6px}.read-only{font-size:9px;padding:5px 7px}.hero{padding:21px;min-height:229px}.hero-top i{display:none}.hero-number{font-size:clamp(38px,10.5vw,54px);margin:14px 0 6px}.hero-chart{height:88px}.hero-bottom{left:20px;right:20px;font-size:9px}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:10px}.stat{padding:15px 14px}.stat strong{font-size:21px}.section-head{margin-top:25px}.section-head h2{font-size:18px}.panel{padding:17px}.chart-panel{padding:16px 13px}.range-control button{padding:6px 7px}.graph-wrap{height:190px}.pulse-list{gap:6px}.pulse-item b{font-size:17px}.pulse-item small{font-size:10px}.segment button{padding:5px 7px;font-size:10px}.target-row>div:nth-child(2){width:100px}.target-row b{font-size:18px}.target-row p{font-size:10px}.sim-inputs{grid-template-columns:1fr}.sim-inputs label+label{margin-top:2px}.target-comparison .compare-grid{gap:5px}.compare-block b{font-size:16px}.risk-cards{gap:9px}.risk-card{padding:13px}.risk-card b{font-size:21px}.setting-tag{font-size:9px}.settings-line{align-items:flex-start}.bottom-nav{height:63px}.stat-note{line-height:1.45}}
 @media(max-width:360px){.page-intro h1{font-size:21px}.hero-number{font-size:37px}.live-chip{display:none}.chart-header{align-items:flex-start}.range-control{gap:1px}.range-control button{padding:5px 6px}.position-top{gap:6px}.symbol-info{gap:7px}.symbol-badge{width:37px;height:37px;flex-basis:37px}.position-value strong{font-size:14px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+
+/* Northstar Light v2.1 — clean white investment workspace.
+   Keeps the existing responsive layout and interactions unchanged. */
+:root{
+ color-scheme:light;
+ --bg:#ffffff;--surface:#ffffff;--surface2:#f7f9fd;
+ --line:#e7ebf1;--text:#172337;--muted:#64748b;--faint:#7b899c;
+ --accent:#1769c2;--teal:#148a78;--profit:#d94a62;--loss:#078b6d;--amber:#ad711c;
+}
+html{background:#ffffff}
+body{background:#ffffff;color:var(--text)}
+body:before{background:none}
+.topbar{background:#ffffff;border-bottom:1px solid #ecf0f5}
+.brand-text,.page-intro h1,.section-head h2,.panel-head h2,.rulebook strong,.settings-line strong,.target-row strong,.position-card strong,.trade-card strong,.stat strong{color:var(--text)}
+.brand-text small{color:#7f8fa7}
+.brand-icon{background:linear-gradient(140deg,#227dc8,#5d99e9);color:#fff;box-shadow:0 4px 12px #2a82db20}
+.read-only{background:#e9f7f3;border-color:#bde8da;color:#087d64}
+.icon-button{background:#f1f5fa;border:1px solid #e2eaf4;color:#2467a5}
+.live-chip{background:#f0f5fc;color:#55708d;border-color:#e2e9f2}
+.live-chip.warning{background:#fff7e8;color:#a76b10;border-color:#f1dbaa}
+.live-chip.success{background:#e9f8f2;color:#11815d;border-color:#bde8d5}
+.hero{background:linear-gradient(116deg,#f5f9ff 0%,#ebf4ff 65%,#e3f2fd 100%);border:1px solid #d9e8fa;box-shadow:0 8px 30px #1d49750b,0 1px 0 #fff inset}
+.hero:before{background:#90cdff44}
+.hero-top{color:#5f7188}
+.hero-top i{color:#8697ae}
+.usd-chip{color:#356b9b;border-color:#c6dcef;background:#ffffffa8}
+.hero-number{color:#132942}
+.hero-change small{color:#637b96}
+.hero-bottom{color:#7289a4}
+.stat,.panel,.position-card,.trade-card,.risk-card{background:#ffffff;border:1px solid #e7ebf1;box-shadow:0 2px 14px #19365706}
+.stat-label,.muted{color:#64748b}
+.stat-note,.tiny-note,.micro,.footer-note,.chart-axis,.status-text{color:#78879b}
+.stat strong,.chart-header strong,.pulse-head strong,.pulse-item b,.position-value strong,.headline-panel strong,.risk-card b,.sim-output strong{color:#1c2b40}
+.chart-panel .micro{border-color:#edf0f4}
+.range-control,.segment,.rate-tabs{background:#f2f5f9;border-color:#e6ebf1}
+.range-control button,.segment button,.rate-tabs button{color:#67778a}
+.range-control .chosen,.segment .selected,.rate-tabs .selected{background:#ffffff;color:#1869b4;box-shadow:0 1px 5px #173b6517}
+.chart-tooltip{background:#18334f;color:#f9fbff}
+.pulse-orb{background:#fff5e6;border-color:#f1d8aa;color:#ac7218}
+.pulse-orb.ok{background:#e7f7f2;border-color:#bde9da;color:#16866a}
+.pulse-head p,.pulse-item small,.digest-stamp,.target-row p,.position-foot,.trade-card small,.trade-card p,.risk-card small,.risk-card p,.rulebook p,.settings-line p{color:#718299}
+.pulse-item{border-top-color:#edf0f5}
+.allocation-bars,.holding-allocation{background:#eef2f7}
+.daily-digest{background:#f8fbff;border-color:#e0eafa}
+.digest-stamp{color:#5f7f9d}
+.digest-dot{background:#18a98b;box-shadow:0 0 0 4px #14a58412}
+.daily-digest .micro{color:#7b8da0}
+.headline-panel{background:linear-gradient(116deg,#f1f8ff,#e8f2ff);border-color:#dbeafb}
+.headline-panel p{color:#6c839d}
+.symbol-badge{background:#eef5ff;color:#246aa5;border-color:#dce8f8}
+.position-card,.trade-card{background:#ffffff}
+.position-foot,.position-details,.target-row,.settings-line{border-color:#edf0f4}
+.position-expand{color:#196bb1}
+.position-details small{color:#7b8da0}
+.position-details b{color:#24384f}
+.plan-hero{background:linear-gradient(114deg,#edf7ff,#eaf8f5 73%,#eff9ff);border-color:#d2e8ed}
+.plan-hero-glow{background:#c0eced77}
+.plan-hero h2{color:#14394d}
+.plan-hero p{color:#4e7282}
+.targets-panel{background:#fff}
+.target-comparison{background:#f7f9fc}
+.compare-block small,.compare-block em{color:#71849a}
+.compare-block b{color:#233b56}
+.sim-inputs label{color:#586e86}
+.input-wrap{background:#ffffff;border-color:#dfe7f0}
+.input-wrap span{color:#6085a8}
+.input-wrap input{color:#203449}
+.sim-output{border-top-color:#edf1f5}
+.action-item{border-color:#edf0f5}
+.action-item p{color:#7a8a9d}
+.trade-card .side-tag.buy{background:#e7f2ff;color:#236da9}
+.trade-card .side-tag.sell{background:#fff0f2;color:#b64d5a}
+.review-panel,.rulebook,.settings{background:#ffffff}
+.check-line,.rulebook>div{border-color:#edf0f4}
+.risk-hero{background:linear-gradient(116deg,#fff7f0,#f8f3f8 72%,#f0f6ff);border-color:#efe3da}
+.risk-hero h2{color:#674c38}
+.risk-hero p{color:#907663}
+.risk-symbol{color:#bd885a}
+.setting-tag{background:#edf3f9;color:#47698a}
+.small-btn,.wide-btn{background:#edf5ff;border-color:#cfe3fb;color:#1769b3}
+.privacy-alert{background:#fff8ee;border-color:#efd8b4}
+.privacy-alert b{color:#916019}
+.privacy-alert p{color:#8e7253}
+.empty{border-color:#d9e2ed;color:#8290a2}
+.bottom-nav{background:#ffffffed;border:1px solid #e0e7f0;box-shadow:0 8px 28px #2e4a6920}
+.bottom-nav button{color:#7a8ba0}
+.bottom-nav button.selected{background:#eaf3ff;color:#1769b3}
+.positive{color:#cf4057!important}
+.negative{color:#16856b!important}
+.neutral{color:#6f8297!important}
+.toast{background:#23435f;color:#ffffff}
+a:hover,.text-btn:hover,.legacy-link:hover{color:#0a519a}
