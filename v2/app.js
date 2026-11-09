@@ -24,7 +24,7 @@ function account(){return st.snapshot?.account||{}}
 function dataAgeHours(){const t=new Date(st.snapshot?.generated_at).getTime();return Number.isFinite(t)?(Date.now()-t)/3600000:Infinity}
 function structure(){
  const n=nav(),p=pos(),cash=val(account().cash),mv=p.reduce((a,x)=>a+val(x.mv),0),core=p.filter(x=>coreSet.has(x.symbol)).reduce((a,x)=>a+val(x.mv),0),semis=p.filter(x=>['MU','MRVL','NVDA','AMD','AVGO','SMH','SOXX'].includes(x.symbol)).reduce((a,x)=>a+val(x.mv),0),top=p[0]?val(p[0].mv):0;
- const tactical=Math.max(0,mv-core),stable=Math.max(0,cash);
+ const tactical=Math.max(0,mv-core),stable=cash;
  const v=n||1;
  return {n,p,cash,mv,core,stable,tactical,semis,top,corePct:core/v*100,stablePct:stable/v*100,tacticalPct:tactical/v*100,investedPct:mv/v*100,semisPct:semis/v*100,topPct:top/v*100,cashPct:cash/v*100,risky:cash/v<.05||semis/v>.20||tactical/v>.35};
 }
@@ -48,8 +48,8 @@ function linePath(arr,w,h,pad){
 }
 function renderHero(){
  const a=account();if(!st.snapshot)return;
- const s=structure(),dy=Number(a.today_pnl);
- setText('net-asset',money(a.net_liq));setText('hero-pnl','最近交易日 '+signed(dy));setClass('hero-pnl',color(dy));
+ const s=structure(),dy=a.today_pnl==null?NaN:Number(a.today_pnl);
+ setText('net-asset',money(a.net_liq));setText('hero-pnl',Number.isFinite(dy)?'最近交易日 '+signed(dy):'最近交易日盈亏：插件未提供');setClass('hero-pnl',color(dy));
  setText('hero-date',a.today_pnl_date?dateOnly(a.today_pnl_date):'盈亏日期未提供');
  setText('hero-source','IBKR 快照 · '+stamp(st.snapshot.generated_at));
  setText('stat-invested',money(s.mv,0));setText('stat-invested-note',pct(s.investedPct)+' 净资产');
@@ -169,31 +169,57 @@ function renderRisk(){
  ];
  $('risk-cards').innerHTML=arr.map(x=>'<article class="risk-card"><small>'+x[0]+'</small><b>'+x[1]+'</b><p>'+safe(x[2])+'</p></article>').join('');
  setText('snapshot-time',stamp(st.snapshot.generated_at)+'（时区：新加坡）');
- setText('source-status',st.localKinds.size?'本地临时导入':'公开 JSON');
+ setText('source-status',st.snapshot?'IBKR 插件数据':'等待导入');
 }
+
 function renderDataState(){
- const age=dataAgeHours(),fresh=age<=72&&age>=-6;
- $('data-status').textContent=!st.snapshot?'不可用':st.localKinds.size?'本地导入':fresh?'已同步快照':'数据可能过期';
+ const exists=Boolean(st.snapshot),age=dataAgeHours(),fresh=exists&&age>=-6&&age<=72;
+ $('data-status').textContent=!exists?'等待插件数据':fresh?'已导入 IBKR':'插件数据可能过期';
  $('data-status').classList.toggle('warning',!fresh);$('data-status').classList.toggle('success',fresh);
- setText('global-status','Northstar · IBKR 只读数据 · 最后检查：'+stamp(new Date().toISOString())+' · 投资有风险');
+ if($('plugin-import-banner'))$('plugin-import-banner').hidden=exists;
+ setText('source-status',exists?'IBKR 插件导入':'尚未导入');
+ setText('global-status',exists?'Northstar · IBKR 插件数据 · 只在本次网页会话内使用 · 非实时连接':'Northstar · 无账户数据 · 原公开 JSON 已禁用 · 请导入 IBKR 插件数据');
 }
 function renderAll(){renderDataState();renderHero();renderChart();renderPulse();renderDigest();renderHoldings();renderPlan();renderTrades();renderChecks();renderRisk()}
-async function fetchJson(path){const response=await fetch(path+'?t='+Date.now(),{cache:'no-store'});if(!response.ok)throw new Error(path+' HTTP '+response.status);return response.json()}
-let fetching=false;
-async function reload(silent=false,force=false){
- if(fetching)return;fetching=true;$('refresh-btn').classList.add('working');
- const paths=[['snapshot','../snapshot.json'],['history','../nav-history.json'],['tradeData','../trades.json']];
- const results=await Promise.allSettled(paths.map(async x=>{
-  if(!force&&st.localKinds.has(x[0]))return {type:x[0],data:st[x[0]]};
-  return {type:x[0],data:await fetchJson(x[1])};
- }));
- let good=0,errors=[];results.forEach((r,i)=>{
-  if(r.status==='fulfilled'){const item=r.value;if(item.type==='snapshot'&&item.data?.account?.net_liq!=null){st.snapshot=item.data;good++}else if(item.type==='history'&&Array.isArray(item.data)){st.history=item.data.filter(x=>x&&Number.isFinite(Number(x.value)));good++}else if(item.type==='tradeData'&&item.data&&(Array.isArray(item.data.history)||Array.isArray(item.data.recent))){st.tradeData=item.data;good++}else errors.push(paths[i][0]+' 格式不符')}
-  else errors.push(paths[i][0]+' 获取失败');
- });
- st.loadTime=Date.now();fetching=false;$('refresh-btn').classList.remove('working');renderAll();
- if(!silent)toast(good===3?'已检查最新仓库数据':'已获取 '+good+'/3 份数据');
- if(errors.length)console.warn('Northstar data source',errors.join('、'));
+function normalizePluginData(data){
+ // Browser cannot call ChatGPT's IBKR connector. Only explicitly imported plugin data is used.
+ if(!data||data.source!=='ibkr-plugin')throw Error('仅支持来自 IBKR 插件的数据包（source: ibkr-plugin）');
+ if(data.snapshot?.account?.net_liq!=null&&Array.isArray(data.snapshot.holdings_readonly)){
+  return {snapshot:data.snapshot,history:Array.isArray(data.history)?data.history:[],tradeData:data.tradeData||{recent:[],history:[]}};
+ }
+ const d=data.ibkr||data;
+ const summary=d.summary||d.account_summary||d.get_account_summary;
+ const balances=d.balances||d.account_balances||d.get_account_balances||{};
+ const positions=d.positions||d.account_positions||d.get_account_positions;
+ const perf=d.performance||d.get_pa_performance_all_periods||{};
+ const rawTrades=d.trades||d.account_trades||d.get_account_trades||{};
+ const items=Array.isArray(positions)?positions:positions?.positions;
+ if(!summary||!Number.isFinite(Number(summary.net_liquidation))||!Array.isArray(items))throw Error('插件数据缺少账户汇总或持仓');
+ const balanceRows=Array.isArray(balances)?balances:balances.balances||[];
+ const base=balanceRows.find(x=>x.currency==='BASE')||balanceRows.find(x=>x.currency==='USD')||{};
+ const cash=Number.isFinite(Number(summary.total_cash_value))?Number(summary.total_cash_value):Number(base.cash_balance||0);
+ const snap={generated_at:data.fetched_at||data.generated_at||new Date().toISOString(),
+  account:{net_liq:Number(summary.net_liquidation),cash,gross_position_value:Number(summary.gross_position_value||0),
+   buying_power:Number(summary.buying_power||0),excess_liq:Number(summary.excess_liquidity||0),maint_margin:Number(summary.maintenance_margin||0),
+   available_funds:Number(summary.available_funds||0),today_pnl:summary.today_pnl??null,today_pnl_date:summary.today_pnl_date||null},
+  holdings_readonly:items.map(x=>({
+   symbol:String(x.contract_description||x.symbol||'').trim().toUpperCase(),
+   qty:Number(x.position??x.qty??0),mv:Number(x.market_value??x.mv??0),last:Number(x.market_price??x.last??0),
+   avg:Number(x.average_price??x.avg??0),upnl:Number(x.unrealized_pnl??x.upnl??0),
+   dpnl:Number(x.daily_pnl??x.dpnl??0),asset:x.asset_class||x.asset||'STK'
+  })).filter(x=>x.symbol)};
+ const perfA=perf.accounts?.account||{},series=perfA.periods?.YTD||perfA.periods?.['1Y']||{};
+ const history=(series.dates||[]).map((date,i)=>({
+  time:String(date).replace(/^(\d{4})(\d\d)(\d\d)$/,'$1-$2-$3'),
+  value:Number(series.nav?.[i]),return_fraction:series.cps?.[i]
+ })).filter(x=>Number.isFinite(x.value));
+ const tx=Array.isArray(rawTrades)?rawTrades:rawTrades.trades||[];
+ return {snapshot:snap,history,tradeData:{source:'IBKR plugin',history:tx,recent:tx}};
+}
+function reload(silent=false){
+ // The old public snapshot.json, nav-history.json and trades.json are deliberately NOT fetched.
+ st.loadTime=Date.now();renderAll();
+ if(!silent)toast(st.snapshot?'当前显示已导入快照；需要新数据请重新导入':'网页无法直接调用 ChatGPT 插件，请导入私人 IBKR 插件数据包');
 }
 function initControls(){
  $('refresh-btn').onclick=()=>reload();$('refresh-secondary').onclick=()=>reload();
@@ -233,26 +259,26 @@ function initControls(){
   const t='Northstar 每日持仓摘要 · '+stamp(st.snapshot.generated_at)+'\n'+buildDigest()+'\n数据为 IBKR 快照，不是实时交易建议。';
   try{await navigator.clipboard.writeText(t);toast('账户摘要已复制')}catch{toast('浏览器未授权复制，请手动复制')}
  };
+
  $('file-input').onchange=async e=>{
   const file=e.target.files?.[0];if(!file)return;
   try{
-   if(file.size>15*1024*1024)throw new Error('文件超过 15MB');
-   const data=JSON.parse(await file.text());
-   let kind;
-   if(data&&data.account&&Array.isArray(data.holdings_readonly)){kind='snapshot';st.snapshot=data}
-   else if(Array.isArray(data)&&data[0]?.time&&data[0]?.value!==undefined){kind='history';st.history=data}
-   else if(data&&(Array.isArray(data.history)||Array.isArray(data.recent))){kind='tradeData';st.tradeData=data}
-   else throw new Error('仅支持 snapshot.json、nav-history.json 或 trades.json 格式');
-   st.localKinds.add(kind);renderAll();toast('已在本次页面会话导入 '+file.name+'（未上传）');
-  }catch(err){toast('导入失败：'+err.message)}finally{e.target.value=''}
+   if(file.size>15*1024*1024)throw Error('文件超过15MB');
+   const data=normalizePluginData(JSON.parse(await file.text()));
+   st.snapshot=data.snapshot;st.history=data.history;st.tradeData=data.tradeData;
+   st.localKinds=new Set(['snapshot','history','tradeData']);
+   st.loadTime=Date.now();renderAll();
+   toast('已导入 IBKR 插件数据，仅在当前页面会话使用');
+  }catch(err){toast('导入失败：'+err.message)}
+  finally{e.target.value=''}
  };
- $('clear-local').onclick=()=>{st.localKinds.clear();reload(false,true)};
+ $('clear-local').onclick=()=>location.reload();
+
 }
+
 function boot(){
  const now=new Date();
  setText('today-label',new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Singapore',year:'numeric',month:'long',day:'numeric',weekday:'long'}).format(now)+' · WEALTH OVERVIEW');
- initNavigation();initControls();renderChecks();reload();
- setInterval(()=>{if(!document.hidden)reload(true)},5*60*1000);
- document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()-val(st.loadTime)>5*60*1000)reload(true)});
+ initNavigation();initControls();renderAll();
 }
 document.addEventListener('DOMContentLoaded',boot);
