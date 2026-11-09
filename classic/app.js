@@ -200,6 +200,5 @@ window.addEventListener('message',event=>{
 });
 document.addEventListener('DOMContentLoaded',()=>{
  boot();
- if(window.parent!==window.parent.parent){/* no-op: nested embedding does not affect data */}
  if(window.parent!==window)window.parent.postMessage({type:'IBKR_CLASSIC_READY'},'*');
 });
