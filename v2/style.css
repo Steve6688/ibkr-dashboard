@@ -112,3 +112,10 @@ body:before{background:none}
 .neutral{color:#6f8297!important}
 .toast{background:#23435f;color:#ffffff}
 a:hover,.text-btn:hover,.legacy-link:hover{color:#0a519a}
+
+/* IBKR plugin-only source notice */
+.plugin-import-banner{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 14px;padding:17px 18px;border:1px solid #d7e8f7;border-radius:17px;background:linear-gradient(110deg,#f4f9ff,#f1faf8)}
+.plugin-import-banner strong{font-size:14px;color:#173d60}
+.plugin-import-banner p{margin:6px 0 0;font-size:11px;color:#54718a;line-height:1.7}
+.plugin-import-banner button{flex:0 0 auto}
+@media(max-width:480px){.plugin-import-banner{flex-direction:column;align-items:stretch}.plugin-import-banner button{align-self:flex-end}}
