@@ -1,40 +1,36 @@
-# Northstar V2 · IBKR 投资驾驶舱
+# Northstar V2 · IBKR 插件数据模式
 
-入口：https://steve6688.github.io/ibkr-dashboard/v2/
+网站：https://steve6688.github.io/ibkr-dashboard/v2/
 
-此版本在原站之外增加全新移动端投资分析界面，严格只读，不会下单或操作账户。
+## 当前实现
+- V2 投资驾驶舱为 GitHub Pages 公开静态网站，保留白色主题、资产、持仓、投资计划、历史净值及复盘功能。
+- **账户数据只接受本地导入的 IBKR 插件 JSON 包**（source 字段严格为 ibkr-plugin）。
+- **已取消自动读取 ../snapshot.json、../nav-history.json、../trades.json**，也不从公开 GitHub 仓库回退获取账户数值。
+- ChatGPT 中的私人 IBKR 插件可读取个人数据，但此接口不暴露给 GitHub Pages JavaScript。网站无法直接调用 ChatGPT 已连接的私人插件，也不会要求在网页填入 IBKR 账号或密码。
+- 浏览器内存中的导入仅对当前页面会话有效；刷新网页即清空；不会存到 GitHub、网站服务器、localStorage、或 IndexedDB。投资目标和复盘勾选仍使用浏览器 localStorage。
+- 右上角刷新按钮仅提醒用户重新导入插件数据，绝不声称向 IBKR 实时同步。
 
-## 已实现
+## 获取数据包
+在 ChatGPT 里询问“用已连接的 IBKR 插件生成最新的网页导入包”，下载生成的私人 JSON 文件；在 V2 的 风险 → 同步与设置 → 选择 IBKR JSON 导入。文件不可提交到公开 GitHub 仓库。
 
-- 账户资产：净资产、现金、持仓市值、日期标注与最近交易日盈亏。
-- 历史净值：1周、1月、3月及全部区间，点击查看日期；区分净值与投资回报率。
-- 持仓明细：权重、成本、浮动盈亏，核心/成长分类筛选。
-- 投资计划：核心仓、稳定仓、战术仓三类目标及权重偏差。
-- 复利情景：每月投入与不同假设收益率的10年模拟，不保证收益。
-- 最近成交、日常交易复盘清单、风险诊断、只读简报、临时文件导入。
-- 支持 iPhone 小屏浏览与新加坡时区显示。
+导入包基本格式：
 
-## 数据的真实边界
+```json
+{
+  "source": "ibkr-plugin",
+  "fetched_at": "2026-11-09T16:16:40Z",
+  "summary": {"net_liquidation": 0, "total_cash_value": 0, "gross_position_value": 0},
+  "positions": {"positions": []},
+  "performance": {"portfolio_measure": "TWR", "accounts": {"account": {"periods": {"YTD": {"dates": [], "nav": [], "cps": []}}}}},
+  "trades": {"trades": []}
+}
+```
 
-网站从现有仓库读取 ../snapshot.json、../nav-history.json、../trades.json 。
-网页打开时重新读取，并在页面保持开启时每5分钟重新检查。页面显示数据的更新时间及过期状态。
+可选字段：balances（用于现金核对）、today_pnl（仅在 IBKR 工具实际返回时才展示）。`dates/nav/cps` 为平行数组；cps 必须为累积 TWR 小数。请勿填入伪造价格、盈亏或时间戳。
 
-重要：网站本身不会连接 IBKR。若公开 JSON 没有被其他可信流程更新，网页自动刷新也不会产生新的账户数据。真正的全天候自动同步需要具备身份验证与加密存储的后台服务；请勿将真实 IBKR token 或新的账户数据直接提交到公开仓库。
+## 真正自动同步的下一阶段
+需搭建独立的**身份验证 + 私有数据存储 + 只读同步服务**，遵守 IBKR 的 API 会话/授权要求，再通过受认证接口供前端获取。现有 ChatGPT 插件连接不会自动授予网站访问权。不应依赖客户端 API 密钥、公开静态 JSON、浏览器密码框或向公开仓库存储金融数据。
 
-临时导入的 JSON 仅在当前页面内存使用，不上传服务器，也不跨页面会话持久保存。资产配置目标和检查清单会保存在本地浏览器。
+原版本的 `snapshot.json` 和 `trades.json` 仍可能公开可访问；V2 不再读取，并不代表旧版的暴露问题已消除。
 
-## 口径
-
-- 净资产为 IBKR net liquidation，不能直接代表投资盈亏。
-- TWR 来自 nav-history.json 的 return_fraction 字段，排除出入金影响。
-- 当前核心仓分类为 VOO、QQQ、QQQM、SPY、VTI、IVV 等指数 ETF。
-- 稳定仓目前仅按现金计算，短债与黄金仓位可在下一阶段扩充。
-- 战术仓暂按其余个股归类，不代表全部是日内交易。
-- 半导体集中度仅统计直接相关标的，不穿透 QQQ、VOO 成分。
-- 复利模拟不计费用、税款、通胀和汇率；不是收益预测。
-
-## 安全警告
-
-本仓库公开发布，旧版 snapshot.json、trades.json 和 Git 历史中可能有个人账户与交易信息。即使前端加入密码，也不能保护静态公开 JSON。应将新的账户同步迁移到有认证、私有存储和加密的数据端点，并评估旧版数据与历史版本的暴露风险。
-
-ChatGPT 每日投资日报推送和网站静态 JSON 自动同步是两回事，不应混为一谈。
+每日 ChatGPT 自动日报已调整为直接读取 IBKR 插件，并明确禁止旧 GitHub JSON 回退、下单或公开写入账户数据。
