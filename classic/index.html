@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="IBKR 资产驾驶舱，插件数据驱动的私人投资分析。">
+<title>IBKR 资产驾驶舱 · 经典白色版</title><link rel="stylesheet" href="./style.css?v=1">
+</head><body>
+<main class="main">
+<header><div><div class="eyebrow">INTERACTIVE BROKERS · PRIVATE DESK</div><h1 id="heading">资产总览</h1></div><div class="actions"><span class="mode-pill">只读分析</span><button id="refresh" title="数据刷新说明" aria-label="数据刷新说明"><svg viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M6 9a7 7 0 0 1 11.5-2L20 12M4 12l2.5 5a7 7 0 0 0 12-2"/></svg></button></div></header>
+<div id="notice" class="notice"><div><strong>当前未加载私人数据</strong><p>此网页保持公开，但不会读取公开仓库内的旧账户 JSON。请通过 ChatGPT 的 IBKR 插件生成私人 JSON 文件，再点击下方导入。公开网页无法直接调用 ChatGPT 插件。</p></div><label class="btn primary">选择插件数据<input id="import-file" type="file" accept=".json,application/json" hidden></label></div>
+<section class="page" id="page-overview">
+ <article class="card hero"><div class="label">账户净资产 <small>USD · NET LIQUIDATION</small></div><div class="nav-amount" id="nav">—</div><div class="hero-meta"><span>今年时间加权收益率 <b id="twr">—</b></span><span id="asof">尚未加载</span></div><svg class="spark" viewBox="0 0 340 95" preserveAspectRatio="none" id="spark" aria-label="净资产历史走势"></svg><div class="hero-bottom"><span id="source">来源：IBKR 插件</span><span>净值不等于收益</span></div></article>
+ <div class="pair">
+  <article class="card metric large"><span class="label">持仓当日盈亏</span><strong id="daily">—</strong><small>仅合计当前持仓，不代表账户总盈亏</small></article>
+  <article class="card goal"><span class="label">距离回本线 <button class="inline-edit" id="edit-goal" title="修改回本线">✎</button></span><div class="ring"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42"/><circle id="ring-progress" cx="50" cy="50" r="42"/></svg><div><strong id="goal-text">—</strong><small id="goal-base">$11,340</small></div></div></article>
+ </div>
+ <div class="pair compact">
+  <article class="card metric"><span class="label">持仓总市值</span><strong id="invested">—</strong><small id="invested-pct">—</small></article>
+  <article class="card metric"><span class="label">现金余额</span><strong id="cash">—</strong><small id="cash-pct">—</small></article>
+ </div>
+ <article class="card chart-card"><div class="section-head"><h2>资产净值走势</h2><div class="range" id="ranges"><button data-range="7">7日</button><button data-range="30">30日</button><button data-range="90">90日</button><button class="chosen" data-range="1000">全部</button></div></div><svg id="nav-chart" viewBox="0 0 340 145" preserveAspectRatio="none" aria-label="历史净资产曲线"></svg><div class="date-range"><span id="chart-start">—</span><span id="chart-end">—</span></div><p class="footnote">包括入金出金影响；收益率以券商报告的 TWR 为准。</p></article>
+ <div class="section-head"><h2>资产配置</h2><button class="link" data-to="plan">调整目标 →</button></div>
+ <article class="card"><div class="stacked" id="overview-stack"></div><div class="allocation-legend" id="overview-legend"></div><div class="three-metrics" id="three-metrics"></div></article>
+ <div class="section-head"><h2>账户风险提示</h2><button class="link" data-to="account">查看全部 →</button></div><article class="card" id="warning-card"><p class="empty">导入数据后显示风险分析。</p></article>
+</section>
+<section class="page" id="page-holdings" hidden><div class="section-head"><h2>当前持仓</h2><small id="position-count">IBKR 插件数据</small></div><div class="card"><div class="stacked" id="positions-stack"></div><div class="allocation-legend" id="positions-legend"></div></div><div id="positions"></div><p class="footnote">展示券商的持仓市值与未实现盈亏；不是全部历史收益。</p></section>
+<section class="page" id="page-trades" hidden><div class="section-head"><h2>最新成交记录</h2><small id="trade-count">过去7日</small></div><div class="card"><p class="footnote">展示 IBKR 最近7日的成交记录，含换汇交易。时间为北京时间（UTC+8），数据可能包括分笔成交。</p><div class="filters" id="trade-filters"><button class="chosen" data-side="ALL">全部</button><button data-side="BUY">买入</button><button data-side="SELL">卖出</button></div></div><div id="trades"></div><button class="load-more" id="more-trades">查看更多成交</button></section>
+<section class="page" id="page-plan" hidden><div class="section-head"><h2>长期增值配置</h2><small>目标可修改</small></div><article class="card"><div class="target"><div><strong>长期核心仓</strong><small>VOO / QQQ 等指数ETF</small></div><div class="target-value"><b id="goal-core">65%</b><input id="core-slider" type="range" min="30" max="85" step="5" value="65"></div></div><div class="target"><div><strong>稳定防御仓</strong><small>现金、短期美债、黄金等</small></div><div class="target-value"><b id="goal-stable">20%</b><input id="stable-slider" type="range" min="5" max="50" step="5" value="20"></div></div><div class="target"><div><strong>战术成长仓</strong><small>个股、短线与主题仓</small></div><b id="goal-tactical">15%</b></div><div class="comparison" id="compare"></div></article><div class="section-head"><h2>十年复利情景</h2><small>模拟不等于预测</small></div><article class="card"><label class="input-label">每月新增投入（美元）<input id="monthly" type="number" value="200" min="0" step="50" inputmode="decimal"></label><div class="filters" id="rates"><button data-rate="0.04">年化4%</button><button data-rate="0.07" class="chosen">年化7%</button><button data-rate="0.10">年化10%</button></div><div class="label">十年后模拟资产</div><strong class="forecast" id="forecast">—</strong><small id="forecast-note">按月投入、未计税费通胀</small><svg id="forecast-curve" viewBox="0 0 340 95" preserveAspectRatio="none"></svg></article></section>
+<section class="page" id="page-account" hidden><div class="section-head"><h2>账户与风险</h2><small>只读</small></div><article class="card" id="account-metrics"><p class="empty">尚未导入私人数据</p></article><div class="section-head"><h2>集中度诊断</h2></div><article class="card" id="risk-metrics"><p class="empty">等待持仓数据</p></article><div class="section-head"><h2>数据同步与隐私</h2></div><article class="card"><div class="setting-line"><div><strong>数据来源</strong><p>ChatGPT 已连接的 Interactive Brokers 插件。</p></div><span class="tag">本地导入</span></div><div class="setting-line"><div><strong>快照时间</strong><p id="snapshot-time">—</p></div><label class="btn primary">重新导入<input class="import-alias" type="file" accept=".json,application/json" hidden></label></div><div class="privacy"><strong>公开网页与插件权限相互隔离</strong><p>这个网站没有 IBKR 登录凭据，也不会自动向 ChatGPT 请求数据、上传账户文件到 GitHub。自动更新必须另行部署有身份验证的私有数据服务；当前导入的数据仅存在本次页面内存中，刷新即清空。</p></div><button class="load-more" id="clear">清除已导入数据</button></article></section>
+<div id="status" role="status"></div>
+</main>
+<nav class="tabs" aria-label="导航"><button data-page="overview" aria-selected="true"><span class="ico">▦</span>总览</button><button data-page="holdings"><span class="ico">▤</span>持仓</button><button data-page="trades"><span class="ico">⇄</span>交易</button><button data-page="plan"><span class="ico">◎</span>计划</button><button data-page="account"><span class="ico">◉</span>账户</button></nav>
+<div class="toast" id="toast" hidden role="status"></div>
+<script id="private-data" type="application/json">null</script>
+<script src="./app.js?v=1" defer></script>
+</body></html>
