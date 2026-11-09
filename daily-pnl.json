@@ -1,8 +1,8 @@
 {
-  "source": "IBKR get_pa_performance_all_periods",
+  "source": "IBKR get_pa_performance_all_periods?2026-11-10 IBKR ???????",
   "currency": "USD",
-  "method": "每日净值差额；逐日与 TWR 核对至 0.01 美元，未通过的日期不展示。非已实现盈亏。",
-  "updated_at": "2026-11-06 22:01:21",
+  "method": "每日净值差额；逐日与 TWR 核对至 0.01 美元，未通过的日期不展示。非已实现盈亏。 2026-11-10 ? IBKR ??????????????GOOGL + AMZN + XOM ?? +$27.64?????????????/TWR???",
+  "updated_at": "2026-11-10 05:28:17",
   "days": [
     {
       "date": "2026-11-02",
@@ -19,6 +19,10 @@
     {
       "date": "2026-11-06",
       "value": 169.06
+    },
+    {
+      "date": "2026-11-10",
+      "value": 27.64
     }
   ]
 }

@@ -7,13 +7,13 @@
     "buying_power": 26391.2,
     "cash": 171.4,
     "maint_margin": 2178.44,
-    "today_pnl": 169.06,
+    "today_pnl": 27.64,
     "pdt_cancelled": null,
     "gross_position_value": 8713.77,
     "equity_with_loan_value": 8885.16,
     "available_funds": 6597.8,
     "initial_margin": 2287.36,
-    "today_pnl_date": "2026-11-06"
+    "today_pnl_date": "2026-11-10"
   },
   "recovery": {
     "realized_today_usd": 100.0,
