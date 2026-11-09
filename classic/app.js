@@ -192,4 +192,14 @@ function boot(){
  const preloaded=$('private-data').textContent.trim();
  if(preloaded&&preloaded!=='null'){try{load(JSON.parse(preloaded))}catch(e){console.error('IBKR export invalid',e);toast('内嵌插件数据无效')}}
 }
-document.addEventListener('DOMContentLoaded',boot);
+// Private downloadable launcher sends the plugin snapshot using browser-local postMessage.
+// This does not upload brokerage data to GitHub or any server.
+window.addEventListener('message',event=>{
+ if(event.source!==window.parent||!event.data||event.data.type!=='IBKR_PLUGIN_IMPORT')return;
+ try{load(event.data.payload)}catch(err){toast('插件快照无法读取：'+err.message)}
+});
+document.addEventListener('DOMContentLoaded',()=>{
+ boot();
+ if(window.parent!==window.parent.parent){/* no-op: nested embedding does not affect data */}
+ if(window.parent!==window)window.parent.postMessage({type:'IBKR_CLASSIC_READY'},'*');
+});
