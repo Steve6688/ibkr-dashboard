@@ -144,7 +144,11 @@ function renderTrades(){
  const show=filtered.slice(0,st.shown);
  $('trade-list').innerHTML=show.length?show.map(x=>{
   const buy=x.side==='BUY',qty=Math.abs(val(x.size)),turn=qty*val(x.price);
-  return '<article class="trade-card"><div class="trade-top"><div><span class="side-tag '+(buy?'buy':'sell')+'">'+(buy?'买入':'卖出')+'</span> <strong>'+safe(x.symbol||'—')+'</strong></div><strong class="trade-amount">'+money(turn)+'</strong></div><p>'+qty+' 股 × '+money(x.price)+' · '+tradingTime(x.trade_time)+'（新加坡时间）</p></article>';
+  const isFx=x.sec_type==='CASH'||(x.symbol==='USD'&&x.currency==='CNH');
+  const currency=safe(x.currency||'USD');
+  const amount=isFx?currency+' '+turn.toLocaleString('en-US',{maximumFractionDigits:2}):money(turn);
+  const description=isFx?(qty.toLocaleString('en-US')+' USD · 汇率 '+Number(x.price).toFixed(5)+' '+currency+'/USD'):(qty+' 股 × '+money(x.price));
+  return '<article class="trade-card"><div class="trade-top"><div><span class="side-tag '+(buy?'buy':'sell')+'">'+(isFx?'换汇':buy?'买入':'卖出')+'</span> <strong>'+safe(x.symbol||'—')+'</strong></div><strong class="trade-amount">'+amount+'</strong></div><p>'+description+' · '+tradingTime(x.trade_time)+'（新加坡时间）</p></article>';
  }).join(''):'<p class="empty">当前筛选没有交易数据。</p>';
  $('show-more-trades').hidden=filtered.length<=st.shown;
 }
