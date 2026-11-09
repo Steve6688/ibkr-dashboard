@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="IBKR 投资驾驶舱：持仓、净值、风险、复盘与资产增长规划。只读分析，不提供交易服务。">
   <title>Northstar · IBKR 投资驾驶舱</title>
-  <link rel="stylesheet" href="./style.css?v=2.1">
+  <link rel="stylesheet" href="./style.css?v=3">
 </head>
 <body>
   <div class="shell">
@@ -16,8 +16,8 @@
     </header>
     <main class="content">
       <section class="screen active" id="screen-home">
-        <div class="page-intro"><div><p class="eyebrow" id="today-label">投资驾驶舱 · Asia/Singapore</p><h1>你的资产，全局掌控<span class="accent">.</span></h1></div><span class="live-chip" id="data-status">正在读取</span></div>
-        <article class="hero">
+        <div class="page-intro"><div><p class="eyebrow" id="today-label">投资驾驶舱 · Asia/Singapore</p><h1>你的资产，全局掌控<span class="accent">.</span></h1></div><span class="live-chip" id="data-status">等待插件数据</span></div>
+        <article class="plugin-import-banner" id="plugin-import-banner"><div><strong>通过 IBKR 插件读取私人数据</strong><p>新版不再显示公开仓库旧持仓。ChatGPT 插件无法直接从网页调用：请先在聊天中获取 IBKR 数据包，再到「风险 → 同步与设置」导入。导入内容仅在本次网页会话内使用。</p></div><button type="button" class="small-btn" data-route="insights">去导入 →</button></article><article class="hero">
           <div class="hero-top"><span>账户净资产 <i>NET LIQUIDATION</i></span><span class="usd-chip">USD</span></div>
           <div class="hero-number" id="net-asset">—</div>
           <div class="hero-change"><span id="hero-pnl">最新交易日盈亏：—</span><small id="hero-date">等待读取</small></div>
@@ -85,7 +85,7 @@
         <div class="section-head"><div><p class="overline">GUARDRAILS</p><h2>投资纪律</h2></div></div>
         <article class="panel rulebook"><div><strong>01 · 不用融资购买力冒充现金</strong><p>仓位以净资产而不是购买力衡量；融资可能放大波动与强制平仓风险。</p></div><div><strong>02 · 控制个股与相关性</strong><p>半导体、纳指成长、科技巨头之间可能同步下跌，不能只看股票数量。</p></div><div><strong>03 · 先定义最大损失，再下单</strong><p>若不能确定价格和风险，就不应把订单标记为可执行。</p></div><div><strong>04 · 用复盘改进系统</strong><p>把策略收益与入出金分开；记录每笔成交的理由和是否遵守规则。</p></div></article>
         <div class="section-head"><div><p class="overline">DATA & PRIVACY</p><h2>同步与设置</h2></div></div>
-        <article class="panel settings"><div class="settings-line"><div><strong>公开静态数据源</strong><p>读取同一 GitHub 仓库的旧版 JSON。网站不会直接登录 IBKR。</p></div><span id="source-status" class="setting-tag">未检查</span></div><div class="settings-line"><div><strong>最新 IBKR 快照</strong><p id="snapshot-time">—</p></div><button class="small-btn" id="refresh-secondary" type="button">重新获取</button></div><div class="settings-line"><div><strong>临时导入自己的数据</strong><p>选择 IBKR 快照、净值历史或交易 JSON，仅在当前页面会话使用，不上传服务器。</p></div><label class="small-btn file-label">导入 JSON<input type="file" id="file-input" accept=".json,application/json" hidden></label></div><div class="privacy-alert"><b>隐私提醒</b><p>当前 GitHub 仓库为公开仓库，旧版账户快照、历史成交 JSON 可被互联网访问。不能靠页面密码框保护公开 JSON。请避免再往公开仓库上传新账户数据，建议迁移到有身份验证的私有数据服务。</p></div><button id="clear-local" class="wide-btn" type="button">恢复仓库数据 / 清空本次临时导入</button><a class="legacy-link" href="../" target="_blank" rel="noopener noreferrer">打开原版看板 ↗</a></article>
+        <article class="panel settings"><div class="settings-line"><div><strong>IBKR 插件数据源</strong><p>仅从用户选择的 IBKR 插件 JSON 数据包读取账户数据；已停止访问旧版公开快照。</p></div><span id="source-status" class="setting-tag">未检查</span></div><div class="settings-line"><div><strong>已导入快照时间</strong><p id="snapshot-time">—</p></div><button class="small-btn" id="refresh-secondary" type="button">同步说明</button></div><div class="settings-line"><div><strong>导入插件数据包</strong><p>在 ChatGPT 中通过已连接的 IBKR 插件生成 JSON 数据包。选择文件导入，仅在当前页面会话使用，不上传 GitHub 或服务器；刷新网页会清空数据。</p></div><label class="small-btn file-label">选择 IBKR JSON<input type="file" id="file-input" accept=".json,application/json" hidden></label></div><div class="privacy-alert"><b>隐私提醒</b><p>V2 已停止读取旧公开 JSON，但原仓库历史快照与交易文件仍可能被互联网访问。网页端不能直接调用 ChatGPT 私有插件；完全自动同步必须额外部署经过身份验证的私有后端。请勿向公开仓库写入账户明细或 IBKR 凭据。</p></div><button id="clear-local" class="wide-btn" type="button">清空本次会话数据</button><a class="legacy-link" href="../" target="_blank" rel="noopener noreferrer">打开原版看板 ↗</a></article>
       </section>
       <p class="status-text" id="global-status" role="status" aria-live="polite"></p>
     </main>
@@ -98,6 +98,6 @@
     </nav>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-  <script src="./app.js?v=2" defer></script>
+  <script src="./app.js?v=3" defer></script>
 </body>
 </html>
