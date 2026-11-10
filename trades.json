@@ -1,5 +1,5 @@
 {
-  "source": "IBKR 插件 · UTC 滚动7日 / YEAR_TO_DATE?2026-11-10 ??? IBKR ??????????????",
+  "source": "IBKR 实盘核对 · 2026-11-10 会话新仓（GOOGL/AMZN/XOM，owner=team）已手工并入最近成交；历史成交仍来自既有同步。",
   "recent": [
     {
       "symbol": "GOOGL",
@@ -12,14 +12,15 @@
       "formatted_price": "291.42",
       "order_type": "LIMIT",
       "tif": "DAY",
-      "description": "???????????????????????????????",
+      "description": "会话新仓开仓：限价买入 10 股 @ 291.42。时戳为会话日，非逐笔交易所时间。",
       "trade_time": "2026-11-09T21:00:00Z",
       "exchange": null,
       "commission": null,
       "net_amount": 2914.2,
       "realized_pnl": 0,
       "order_id": null,
-      "trade_id": "sess-20261110-googl-buy"
+      "trade_id": "sess-20261110-googl-buy",
+      "owner": "team"
     },
     {
       "symbol": "GOOGL",
@@ -32,14 +33,15 @@
       "formatted_price": "291.442",
       "order_type": "STOP",
       "tif": "DAY",
-      "description": "????????? 01:26?IBKR ??",
+      "description": "会话平仓：止损卖出 10 股 @ 291.442，已实现约 -0.54。成交时间 2026-11-10 01:26（上海）。",
       "trade_time": "2026-11-09T17:26:00Z",
       "exchange": null,
       "commission": null,
       "net_amount": 2914.42,
       "realized_pnl": -0.54,
       "order_id": null,
-      "trade_id": "sess-20261110-googl-sell"
+      "trade_id": "sess-20261110-googl-sell",
+      "owner": "team"
     },
     {
       "symbol": "AMZN",
@@ -52,14 +54,15 @@
       "formatted_price": "268.32",
       "order_type": "LIMIT",
       "tif": "DAY",
-      "description": "???????????????????????????????",
+      "description": "会话新仓开仓：限价买入 12 股 @ 268.32。时戳为会话日，非逐笔交易所时间。",
       "trade_time": "2026-11-09T21:00:00Z",
       "exchange": null,
       "commission": null,
       "net_amount": 3219.84,
       "realized_pnl": 0,
       "order_id": null,
-      "trade_id": "sess-20261110-amzn-buy"
+      "trade_id": "sess-20261110-amzn-buy",
+      "owner": "team"
     },
     {
       "symbol": "AMZN",
@@ -72,14 +75,15 @@
       "formatted_price": "268.33",
       "order_type": "STOP",
       "tif": "DAY",
-      "description": "???????????????????????????????",
+      "description": "会话平仓：止损卖出 12 股 @ 268.33，已实现约 -0.65。时戳为会话日，非逐笔交易所时间。",
       "trade_time": "2026-11-09T21:00:00Z",
       "exchange": null,
       "commission": null,
       "net_amount": 3219.96,
       "realized_pnl": -0.65,
       "order_id": null,
-      "trade_id": "sess-20261110-amzn-sell"
+      "trade_id": "sess-20261110-amzn-sell",
+      "owner": "team"
     },
     {
       "symbol": "XOM",
@@ -92,14 +96,15 @@
       "formatted_price": "165.355",
       "order_type": "LIMIT",
       "tif": "DAY",
-      "description": "???????????????????????????????",
+      "description": "会话新仓开仓：限价卖出 19 股 @ 165.355。时戳为会话日，非逐笔交易所时间。",
       "trade_time": "2026-11-09T21:00:00Z",
       "exchange": null,
       "commission": null,
       "net_amount": 3141.745,
       "realized_pnl": 0,
       "order_id": null,
-      "trade_id": "sess-20261110-xom-sell"
+      "trade_id": "sess-20261110-xom-sell",
+      "owner": "team"
     },
     {
       "symbol": "XOM",
@@ -112,14 +117,15 @@
       "formatted_price": "163.80",
       "order_type": "LIMIT",
       "tif": "DAY",
-      "description": "???????????????????????????????",
+      "description": "会话平仓：止盈买回 19 股 @ 163.80，已实现约 +28.83。时戳为会话日，非逐笔交易所时间。",
       "trade_time": "2026-11-09T21:00:00Z",
       "exchange": null,
       "commission": null,
       "net_amount": 3112.2,
       "realized_pnl": 28.83,
       "order_id": null,
-      "trade_id": "sess-20261110-xom-buy"
+      "trade_id": "sess-20261110-xom-buy",
+      "owner": "team"
     },
     {
       "trade_id": "0002264f.6aee654d.01.01",
@@ -722,14 +728,15 @@
       "formatted_price": "291.42",
       "order_type": "LIMIT",
       "tif": "DAY",
-      "description": "???????????????????????????????",
+      "description": "会话新仓开仓：限价买入 10 股 @ 291.42。时戳为会话日，非逐笔交易所时间。",
       "trade_time": "2026-11-09T21:00:00Z",
       "exchange": null,
       "commission": null,
       "net_amount": 2914.2,
       "realized_pnl": 0,
       "order_id": null,
-      "trade_id": "sess-20261110-googl-buy"
+      "trade_id": "sess-20261110-googl-buy",
+      "owner": "team"
     },
     {
       "symbol": "GOOGL",
@@ -742,14 +749,15 @@
       "formatted_price": "291.442",
       "order_type": "STOP",
       "tif": "DAY",
-      "description": "????????? 01:26?IBKR ??",
+      "description": "会话平仓：止损卖出 10 股 @ 291.442，已实现约 -0.54。成交时间 2026-11-10 01:26（上海）。",
       "trade_time": "2026-11-09T17:26:00Z",
       "exchange": null,
       "commission": null,
       "net_amount": 2914.42,
       "realized_pnl": -0.54,
       "order_id": null,
-      "trade_id": "sess-20261110-googl-sell"
+      "trade_id": "sess-20261110-googl-sell",
+      "owner": "team"
     },
     {
       "symbol": "AMZN",
@@ -762,14 +770,15 @@
       "formatted_price": "268.32",
       "order_type": "LIMIT",
       "tif": "DAY",
-      "description": "???????????????????????????????",
+      "description": "会话新仓开仓：限价买入 12 股 @ 268.32。时戳为会话日，非逐笔交易所时间。",
       "trade_time": "2026-11-09T21:00:00Z",
       "exchange": null,
       "commission": null,
       "net_amount": 3219.84,
       "realized_pnl": 0,
       "order_id": null,
-      "trade_id": "sess-20261110-amzn-buy"
+      "trade_id": "sess-20261110-amzn-buy",
+      "owner": "team"
     },
     {
       "symbol": "AMZN",
@@ -782,14 +791,15 @@
       "formatted_price": "268.33",
       "order_type": "STOP",
       "tif": "DAY",
-      "description": "???????????????????????????????",
+      "description": "会话平仓：止损卖出 12 股 @ 268.33，已实现约 -0.65。时戳为会话日，非逐笔交易所时间。",
       "trade_time": "2026-11-09T21:00:00Z",
       "exchange": null,
       "commission": null,
       "net_amount": 3219.96,
       "realized_pnl": -0.65,
       "order_id": null,
-      "trade_id": "sess-20261110-amzn-sell"
+      "trade_id": "sess-20261110-amzn-sell",
+      "owner": "team"
     },
     {
       "symbol": "XOM",
@@ -802,14 +812,15 @@
       "formatted_price": "165.355",
       "order_type": "LIMIT",
       "tif": "DAY",
-      "description": "???????????????????????????????",
+      "description": "会话新仓开仓：限价卖出 19 股 @ 165.355。时戳为会话日，非逐笔交易所时间。",
       "trade_time": "2026-11-09T21:00:00Z",
       "exchange": null,
       "commission": null,
       "net_amount": 3141.745,
       "realized_pnl": 0,
       "order_id": null,
-      "trade_id": "sess-20261110-xom-sell"
+      "trade_id": "sess-20261110-xom-sell",
+      "owner": "team"
     },
     {
       "symbol": "XOM",
@@ -822,14 +833,15 @@
       "formatted_price": "163.80",
       "order_type": "LIMIT",
       "tif": "DAY",
-      "description": "???????????????????????????????",
+      "description": "会话平仓：止盈买回 19 股 @ 163.80，已实现约 +28.83。时戳为会话日，非逐笔交易所时间。",
       "trade_time": "2026-11-09T21:00:00Z",
       "exchange": null,
       "commission": null,
       "net_amount": 3112.2,
       "realized_pnl": 28.83,
       "order_id": null,
-      "trade_id": "sess-20261110-xom-buy"
+      "trade_id": "sess-20261110-xom-buy",
+      "owner": "team"
     },
     {
       "trade_id": "0002264f.6aee654d.01.01",
