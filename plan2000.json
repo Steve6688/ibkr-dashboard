@@ -3,7 +3,7 @@
   "end_date": "2026-12-30",
   "currency": "USD",
   "target_net_profit": 2000,
-  "status": "active",
+  "status": "merged",
   "updated_at": "2026-11-10T10:24:23+08:00",
   "weeks": [
     {
@@ -164,5 +164,6 @@
         "2000": 0.838023088023088
       }
     }
-  }
+  },
+  "status_note": "已并入六个月回本计划"
 }

@@ -1,0 +1,49 @@
+{
+  "title": "六个月回本计划",
+  "total_deposits": 17989,
+  "baseline_net_liq": 11815,
+  "gap": 6174,
+  "start_date": "2026-11-10",
+  "end_date": "2027-05-10",
+  "trading_days": 124,
+  "daily_target": 50,
+  "monthly_target": 1029,
+  "weekly_target": 237,
+  "milestones": [
+    {
+      "date": "2026-12-10",
+      "profit": 1029,
+      "target_net_liq": 12844
+    },
+    {
+      "date": "2027-01-10",
+      "profit": 2058,
+      "target_net_liq": 13873
+    },
+    {
+      "date": "2027-02-10",
+      "profit": 3087,
+      "target_net_liq": 14902
+    },
+    {
+      "date": "2027-03-10",
+      "profit": 4116,
+      "target_net_liq": 15931
+    },
+    {
+      "date": "2027-04-10",
+      "profit": 5145,
+      "target_net_liq": 16960
+    },
+    {
+      "date": "2027-05-10",
+      "profit": 6174,
+      "target_net_liq": 17989
+    }
+  ],
+  "risk": [
+    "1R = $50；每日止损 $100；每周止损 $250。",
+    "浮盈到 1R 先平一半，余仓止损提到成本上方。",
+    "两笔都赢约 +$150 收工；不动原有持仓。"
+  ]
+}
