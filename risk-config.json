@@ -1,0 +1,8 @@
+{
+  "risk_unit": 50,
+  "daily_stop": 100,
+  "weekly_stop": 250,
+  "trade_goal": 40,
+  "increase_to": 65,
+  "win_rate_target": null
+}
