@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T12:38:34+08:00",
+  "generated_at": "2026-11-10T12:48:11+08:00",
   "account": {
     "id": "U1856****",
     "net_liq": 11814.85,
@@ -16,20 +16,21 @@
     "today_pnl_date": "2026-11-06"
   },
   "recovery": {
-    "realized_today_usd": 100.0,
-    "vrt_note": "VRT 11股已确认止盈约+$100（老板私聊确认）",
-    "today_target_usd": 100.0,
-    "today_target_status": "achieved_vrt"
+    "plan": "六个月回本计划",
+    "total_deposits": 17989,
+    "current_net_liq": 11814.85,
+    "remaining": 6174.15,
+    "note": "按整户净值对比总入金；会话已实现收益另见 2026-11-10 复盘。"
   },
   "holdings_readonly": [
     {
       "symbol": "GOOG",
       "qty": 5,
-      "mv": 1440.8999635,
-      "last": 288.1799927,
+      "mv": 1441.6000365,
+      "last": 288.3200073,
       "avg": 279.06896,
-      "upnl": 45.5551635,
-      "dpnl": 10.84991465,
+      "upnl": 46.2552365,
+      "dpnl": 11.54998765,
       "asset": "STK"
     },
     {
@@ -45,132 +46,60 @@
     {
       "symbol": "MRVL",
       "qty": 3,
-      "mv": 462,
-      "last": 154,
+      "mv": 461.6699982,
+      "last": 153.8899994,
       "avg": 164.89906667,
-      "upnl": -32.6972,
-      "dpnl": -1.8000183,
+      "upnl": -33.0272018,
+      "dpnl": -2.1300201,
       "asset": "STK"
     },
     {
       "symbol": "MU",
       "qty": 2,
-      "mv": 1453.1999512,
-      "last": 726.5999756,
+      "mv": 1454.9399414,
+      "last": 727.4699707,
       "avg": 806.59915,
-      "upnl": -159.9983488,
-      "dpnl": -13.10009765,
+      "upnl": -158.2583586,
+      "dpnl": -11.36010745,
       "asset": "STK"
     },
     {
       "symbol": "NVDA",
       "qty": 5,
-      "mv": 898.7999725,
-      "last": 179.7599945,
+      "mv": 897.5499725,
+      "last": 179.5099945,
       "avg": 177.06895445,
-      "upnl": 13.45520025,
-      "dpnl": 5.44998165,
+      "upnl": 12.20520025,
+      "dpnl": 4.19998165,
       "asset": "STK"
     },
     {
       "symbol": "QQQ",
       "qty": 3.4125,
-      "mv": 2312.13933337,
-      "last": 677.5499878,
+      "mv": 2311.45679174,
+      "last": 677.3499756,
       "avg": 698.14238828,
-      "upnl": -70.27156663,
-      "dpnl": -6.14245833,
+      "upnl": -70.95410826,
+      "dpnl": -6.82499997,
       "asset": "STK"
     },
     {
       "symbol": "VOO",
       "qty": 4.2818,
-      "mv": 2966.38812801,
-      "last": 692.78997805,
+      "mv": 2965.61743527,
+      "last": 692.60998535,
       "avg": 682.36543043,
-      "upnl": 44.63582801,
-      "dpnl": 3.93918291,
+      "upnl": 43.86513527,
+      "dpnl": 3.16849017,
       "asset": "STK"
     }
   ],
-  "events": [
-    {
-      "name": "PCE / GDP / 初请",
-      "when": "美东早间"
-    },
-    {
-      "name": "美股开盘",
-      "when": "北京 21:30"
-    },
-    {
-      "name": "盘后 AMZN / INTC",
-      "when": "美东盘后"
-    }
-  ],
+  "events": [],
   "risk": {
-    "max_new_maint": 800,
-    "min_excess_after": 1200,
-    "max_loss": 60,
-    "target": 100,
-    "risk_unit": 30
+    "risk_unit": 50,
+    "daily_stop": 100,
+    "weekly_stop": 250,
+    "note": "浮盈到 1R 先平一半，余仓止损提到成本上方；不动原有持仓。"
   },
-  "cards": [
-    {
-      "symbol": "MSFT",
-      "direction": "BUY",
-      "qty": 5,
-      "entry_limit": 529.17,
-      "target": 549.17,
-      "stop": 522.8,
-      "max_loss_usd": 31.85,
-      "target_profit_usd": 100.0,
-      "rr": 3.14,
-      "maint_margin_usd": 796.25,
-      "post_excess_liq_usd": 1210.27,
-      "last": 530.83,
-      "vwap": 529.17,
-      "target_atr": 1.88,
-      "status": "watch_practical",
-      "note": "调研首选：财报超预期回踩做多。Codex严格扫描因+$100需约3.2x日ATR标为watch；此卡按30%维保放大股数，仍需约1.88x日ATR，开盘需确认方向。",
-      "trigger": "开盘后至少等15分钟；站上当日VWAP回踩企稳再挂限价；偏离参考价>0.3%需重算。"
-    },
-    {
-      "symbol": "GOOGL",
-      "direction": "BUY",
-      "qty": 8,
-      "entry_limit": 325.61,
-      "target": 338.11,
-      "stop": 321.7,
-      "max_loss_usd": 31.28,
-      "target_profit_usd": 100.0,
-      "rr": 3.2,
-      "maint_margin_usd": 781.46,
-      "post_excess_liq_usd": 1225.06,
-      "last": 325.61,
-      "vwap": 324.29,
-      "target_atr": 1.55,
-      "status": "watch_practical",
-      "note": "调研：开盘15~30分钟后再决定，宁做超跌反抽不追跌。严格扫描为watch（约3.2x日ATR）；此为风险帽内可挂参数卡，约1.55x日ATR。",
-      "trigger": "开盘后至少等15分钟；站上当日VWAP回踩企稳再挂限价；偏离参考价>0.3%需重算。"
-    },
-    {
-      "symbol": "HOOD",
-      "direction": "BUY",
-      "qty": 17,
-      "entry_limit": 91.46,
-      "target": 97.49,
-      "stop": 90.51,
-      "max_loss_usd": 18.66,
-      "target_profit_usd": 100.0,
-      "rr": 5.36,
-      "maint_margin_usd": 777.41,
-      "post_excess_liq_usd": 1228.59,
-      "last": 91.41,
-      "vwap": 91.03,
-      "target_atr": 1.146,
-      "status": "qualified",
-      "note": "Codex唯一qualified：波动够、目标约1.15x日ATR；与半导体原仓相关度低。",
-      "trigger": "开盘后等待至少15分钟；价格站上当日VWAP并回踩企稳，才评估限价买入。若偏离参考入场价超过0.3%，重新扫描及计算；不追价。"
-    }
-  ]
+  "cards": []
 }
