@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-11-10T21:00:55+08:00",
+  "generated_at": "2026-11-11T21:20:00+08:00",
   "account": {
     "id": "U1856****",
-    "net_liq": 11762.91,
-    "excess_liq": 9299.02,
-    "buying_power": 36703.28,
-    "cash": 1908.76,
-    "maint_margin": 2463.89,
+    "net_liq": 11996.04,
+    "excess_liq": 9261.54,
+    "buying_power": 36499.27,
+    "cash": 1059.48,
+    "maint_margin": 2734.49,
     "today_pnl": -38.57,
     "pdt_cancelled": null,
-    "gross_position_value": 9855.57,
-    "equity_with_loan_value": 11762.91,
-    "available_funds": 9175.82,
-    "initial_margin": 2587.09,
+    "gross_position_value": 10937.98,
+    "equity_with_loan_value": 11996.04,
+    "available_funds": 9124.82,
+    "initial_margin": 2871.22,
     "today_pnl_date": "2026-11-10"
   },
   "recovery": {
@@ -35,7 +35,7 @@
     },
     {
       "symbol": "IBKR",
-      "qty": 4.6647,
+      "qty": 4.7764,
       "mv": 363.8466,
       "last": 78,
       "avg": 79.38997149,
@@ -65,7 +65,7 @@
     },
     {
       "symbol": "NVDA",
-      "qty": 5,
+      "qty": 10,
       "mv": 886.9999695,
       "last": 177.3999939,
       "avg": 177.06896,
@@ -91,6 +91,16 @@
       "avg": 682.36543043,
       "upnl": 43.52277946,
       "dpnl": 2.82611346,
+      "asset": "STK"
+    },
+    {
+      "symbol": "XOM",
+      "qty": 0,
+      "mv": 0,
+      "last": 165.69999695,
+      "avg": 0,
+      "upnl": 0,
+      "dpnl": 8.4445,
       "asset": "STK"
     }
   ],
