@@ -31,7 +31,7 @@ document.querySelectorAll('.sidebar nav a').forEach(a=>a.addEventListener('click
 // Team P&L is a separate, read-only reconciliation feed. Unknown values stay unknown.
 async function renderTeamPnl(){
  try{
-  const data=await (await fetch('team-pnl.json?t='+Date.now(),{cache:'no-store'})).json(),days=data.days||[],latest=days.at(-1),fmt=x=>valid(x)?(Number(x)<0?'−$':'$')+Math.abs(Number(x)).toLocaleString('en-US',{minimumFractionDigits:6,maximumFractionDigits:6}):'未核实',toneClass=x=>valid(x)?(Number(x)>0?'green':Number(x)<0?'red':''):'';
+  const data=await (await fetch('team-pnl.json?t='+Date.now(),{cache:'no-store'})).json(),days=data.days||[],latest=days.at(-1),fmt=x=>valid(x)?(Number(x)<0?'−$':'$')+Math.abs(Number(x)).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'未核实',toneClass=x=>valid(x)?(Number(x)>0?'green':Number(x)<0?'red':''):'';
   const latestPartial=latest&&latest.verified_partial, heroNet=latest&&valid(latest.net)?fmt(latest.net):'未核实';
   $('team-pnl-subtitle').textContent='ET 会话日 · 目标 $100 · 生成 '+(data.generated_at||'时间未知')+' · 账户净值差额 ≠ 团队交易盈亏';
   $('team-pnl-badge').textContent=latest&&latest.verified?'已核实':'含未核实数据';$('team-pnl-badge').className='team-badge '+(latest&&latest.verified?'':'warn');
