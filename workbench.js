@@ -27,3 +27,19 @@ async function run(){const files=['snapshot.json','nav-history.json','daily-pnl.
 }
 run().catch(e=>{$('status').textContent='数据加载失败：'+e.message});
 document.querySelectorAll('.sidebar nav a').forEach(a=>a.addEventListener('click',()=>{document.querySelectorAll('.sidebar nav a').forEach(x=>x.classList.remove('active'));a.classList.add('active')}));
+
+// Team P&L is a separate, read-only reconciliation feed. Unknown values stay unknown.
+async function renderTeamPnl(){
+ try{
+  const data=await (await fetch('team-pnl.json?t='+Date.now(),{cache:'no-store'})).json(),days=data.days||[],latest=days.at(-1),fmt=x=>valid(x)?(Number(x)<0?'−$':'$')+Math.abs(Number(x)).toLocaleString('en-US',{minimumFractionDigits:6,maximumFractionDigits:6}):'未核实',toneClass=x=>valid(x)?(Number(x)>0?'green':Number(x)<0?'red':''):'';
+  const latestPartial=latest&&latest.verified_partial, heroNet=latest&&valid(latest.net)?fmt(latest.net):'未核实';
+  $('team-pnl-subtitle').textContent='ET 会话日 · 目标 $100 · 生成 '+(data.generated_at||'时间未知')+' · 账户净值差额 ≠ 团队交易盈亏';
+  $('team-pnl-badge').textContent=latest&&latest.verified?'已核实':'含未核实数据';$('team-pnl-badge').className='team-badge '+(latest&&latest.verified?'':'warn');
+  const pct=latest&&latest.verified&&valid(latest.net)?Math.max(0,Math.min(100,Number(latest.net)/Number(data.target_daily||100)*100)):null;
+  $('team-pnl-hero').innerHTML=`<div><div class="hero-label">${esc(latest?.date||'最近交易日')} 团队净额</div><div class="hero-net ${toneClass(latest?.net)}">${heroNet}</div><div class="hero-note">${latestPartial?'已核实部分：'+fmt(latestPartial.net)+'（'+esc(latestPartial.scope||'部分成交')+'）':'整日已核实'}</div></div><div><div class="hero-label">目标进度 ${pct===null?'不可计算':pct.toFixed(1)+'%'}</div><div class="team-progress"><i style="width:${pct||0}%"></i></div><div class="hero-note">未核实日不显示为 0，也不作估算。</div><div class="team-metrics"><div class="team-metric"><span>毛额</span><b class="${toneClass(latest?.gross)}">${fmt(latest?.gross)}</b></div><div class="team-metric"><span>佣金</span><b>${fmt(latest?.commission)}</b></div><div class="team-metric"><span>净额</span><b class="${toneClass(latest?.net)}">${heroNet}</b></div></div></div>`;
+  $('team-pnl-days').innerHTML=`<table class="team-day-table"><thead><tr><th>ET 会话日</th><th>毛额</th><th>佣金</th><th>净额</th><th>目标进度</th><th>核实状态</th></tr></thead><tbody>${days.map(d=>{const ok=d.verified&&valid(d.net),p=ok?Number(d.net)/Number(data.target_daily||100)*100:null;return `<tr class="${d.verified?'':'unverified'}"><td>${esc(d.date)}</td><td class="${toneClass(d.gross)}">${fmt(d.gross)}</td><td>${fmt(d.commission)}</td><td class="${toneClass(d.net)}">${fmt(d.net)}</td><td>${p===null?'未核实':p.toFixed(1)+'%'}</td><td><span class="team-badge ${d.verified?'':'warn'}">${d.verified?'已核实':'未核实'}</span></td></tr>`}).join('')}</tbody></table>`;
+  const known=days.filter(d=>d.verified&&valid(d.net)),total=known.reduce((n,d)=>n+Number(d.net),0),avg=known.length?total/known.length:null;
+  $('team-pnl-cumulative').innerHTML=`<div class="team-cumulative-card"><span>团队累计净额（已核实日）</span><b class="${toneClass(total)}">${known.length?fmt(total):'未核实'}</b></div><div class="team-cumulative-card"><span>达标天数 / 总天数</span><b>${known.filter(d=>Number(d.net)>=Number(data.target_daily||100)).length} / ${days.length}</b></div><div class="team-cumulative-card"><span>日均净额（已核实日）</span><b class="${toneClass(avg)}">${known.length?fmt(avg):'未核实'}</b></div>`;
+ }catch(e){$('team-pnl-subtitle').textContent='团队盈亏数据加载失败；请稍后刷新。';console.error(e)}
+}
+renderTeamPnl();
