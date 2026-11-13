@@ -22,10 +22,10 @@
     },
     {
       "date": "2026-11-11",
-      "gross": 32.537393,
-      "commission": 0.712607,
-      "net": 31.824786,
-      "fill_count": 2,
+      "gross": 45.4003,
+      "commission": 1.137234,
+      "net": 44.263066,
+      "fill_count": 3,
       "verified": true,
       "notes": "XOM 卖 14 是 11/10 买入 27 的跨日平仓，realizedPNL 计入本日；AAPL 买入 12 有本地 runner 证据。AAPL 卖出 12 @354.1 暂列归属待确认，不计团队。"
     },
@@ -39,7 +39,7 @@
       "notes": "AVGO 三笔新增 commission/realizedPNL 已纳入；META/COST 六笔与第一轮 Gateway 交叉一致。AAPL 实际成交在 11/11 ET，不属于本日。"
     }
   ],
-  "team_cumulative_net": 104.23753,
+  "team_cumulative_net": 116.67581,
   "team_fills": [
     {
       "trade_id": "0002264f.6af6e45a.01.01",
@@ -496,6 +496,25 @@
       "source": "refresh-plugin-data.json",
       "verified": true,
       "evidence": "上一轮 site/trades.json 已有 owner=team；本轮沿用。"
+    },
+    {
+      "trade_id": "0000febb.6af49bf4.01.01",
+      "execution_id": "0000febb.6af49bf4.01.01",
+      "symbol": "AAPL",
+      "side": "SELL",
+      "qty": 12.0,
+      "price": 354.1,
+      "beijing_time": "2026-11-12T00:51:13+08:00",
+      "et_time": "2026-11-11T11:51:13-05:00",
+      "session_date": "2026-11-11",
+      "permId": 881029516,
+      "orderId": 881029516,
+      "orderRef": null,
+      "commission": 0.424627,
+      "realizedPNL": 12.43828,
+      "source": "refresh-plugin-data.json",
+      "verified": true,
+      "evidence": "用户经 CEO 于 2026-11-13 确认为团队平仓"
     }
   ],
   "user_own_fills": [
@@ -555,28 +574,6 @@
       "source": "refresh-plugin-data.json",
       "verified": true,
       "evidence": "本轮提示明确列为用户本人 NVDA 加仓。"
-    }
-  ],
-  "attribution_pending": [
-    {
-      "trade_id": "0000febb.6af49bf4.01.01",
-      "execution_id": "0000febb.6af49bf4.01.01",
-      "symbol": "AAPL",
-      "side": "SELL",
-      "qty": 12.0,
-      "price": 354.1,
-      "beijing_time": "2026-11-12T00:51:13+08:00",
-      "et_time": "2026-11-11T11:51:13-05:00",
-      "session_date": "2026-11-11",
-      "permId": 881029516,
-      "orderId": 881029516,
-      "orderRef": null,
-      "commission": 0.424627,
-      "realizedPNL": 12.43828,
-      "source": "refresh-plugin-data.json",
-      "verified": true,
-      "evidence": "插件成交源有 AAPL 12 股 @354.1，但指定的本地团队日志/状态中未找到该成交的 orderRef/orderId/permId 匹配；不计入团队。",
-      "reason": "插件成交源有 AAPL 12 股 @354.1，但指定的本地团队日志/状态中未找到该成交的 orderRef/orderId/permId 匹配；不计入团队。"
     }
   ],
   "session_20261112": {

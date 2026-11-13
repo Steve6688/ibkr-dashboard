@@ -146,8 +146,6 @@ function renderTeamPnl(data){
  const head=document.createElement('div');head.className='team-pnl-row team-pnl-head';['ET 会话日','毛额','佣金','净额','状态'].forEach(x=>head.append(node('span',x)));table.append(head);
  rows.forEach(d=>{const row=document.createElement('div');row.className='team-pnl-row '+(d.verified?'verified':'unverified');const status=d.verified?'已核实':(d.verified_partial?'未核实（部分 '+fmt(d.verified_partial.net)+'）':'未核实');row.append(node('b',d.date),node('span',fmt(d.gross),tone(d.gross)),node('span',fmt(d.commission)),node('span',fmt(d.net),tone(d.net)),node('span',status,'team-status'));if(d.verified_partial)row.title='已核实部分净额 '+fmt(d.verified_partial.net)+'；'+d.verified_partial.scope;table.append(row)});
  host.append(table,node('p','目标 $100/天 · 未核实日保留为“未核实”，不显示为 0。','source'));
- const pending=data.attribution_pending||[];
- if(pending.length){const box=document.createElement('div');box.className='team-pending';box.append(node('b','归属待确认（不计团队）'));pending.forEach(x=>box.append(node('p',`${x.session_date} · ${x.symbol} ${x.side} ${x.qty} @ ${x.price} · ${x.reason||'缺少团队证据'}`)));host.append(box)}
 }
 function drawDaily(input,date){
  const days=Array.isArray(input)?input:[{date,value:input}],svg=$('bars'),NS='http://www.w3.org/2000/svg';svg.replaceChildren();svg.classList.remove('selected');$('bubble').hidden=true;

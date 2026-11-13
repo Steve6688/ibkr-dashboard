@@ -306,9 +306,10 @@
       "realized_pnl": 12.43828,
       "order_id": 881029516,
       "permId": 881029516,
-      "attribution_evidence": "插件成交源有 AAPL 12 股 @354.1，但指定的本地团队日志/状态中未找到该成交的 orderRef/orderId/permId 匹配；不计入团队。",
+      "attribution_evidence": "用户经 CEO 于 2026-11-13 确认为团队平仓",
       "attribution_status": "pending",
-      "session_date": "2026-11-11"
+      "session_date": "2026-11-11",
+      "owner": "team"
     },
     {
       "trade_id": "0000febb.6af488b9.01.01",
@@ -20351,9 +20352,10 @@
       "realized_pnl": 12.43828,
       "order_id": 881029516,
       "permId": 881029516,
-      "attribution_evidence": "插件成交源有 AAPL 12 股 @354.1，但指定的本地团队日志/状态中未找到该成交的 orderRef/orderId/permId 匹配；不计入团队。",
+      "attribution_evidence": "用户经 CEO 于 2026-11-13 确认为团队平仓",
       "attribution_status": "pending",
-      "session_date": "2026-11-11"
+      "session_date": "2026-11-11",
+      "owner": "team"
     },
     {
       "trade_id": "0000febb.6af488b9.01.01",
