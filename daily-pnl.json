@@ -2,19 +2,19 @@
   "source": "IBKR get_pa_performance_all_periods",
   "currency": "USD",
   "method": "每日净值差额；逐日与 TWR 核对至 0.01 美元，未通过的日期不展示。非已实现盈亏。",
-  "updated_at": "2026-11-13 01:02:59",
+  "updated_at": "2026-11-13 12:01:07",
   "days": [
-    {
-      "date": "2026-11-06",
-      "value": 165.89
-    },
     {
       "date": "2026-11-10",
       "value": -72.5
     },
     {
       "date": "2026-11-12",
-      "value": 37.76
+      "value": -54.23
+    },
+    {
+      "date": "2026-11-13",
+      "value": 102.25
     }
   ]
 }
