@@ -27,7 +27,7 @@
       "net": 44.263066,
       "fill_count": 3,
       "verified": true,
-      "notes": "XOM 卖 14 是 11/10 买入 27 的跨日平仓，realizedPNL 计入本日；AAPL 买入 12 有本地 runner 证据。AAPL 卖出 12 @354.1 暂列归属待确认，不计团队。"
+      "notes": "XOM 卖 14 是 11/10 买入 27 的跨日平仓，realizedPNL 计入本日；AAPL 买入 12 有本地 runner 证据；AAPL 卖出 12 @354.1 已由用户经 CEO 于 2026-11-13 确认为团队平仓。"
     },
     {
       "date": "2026-11-12",
