@@ -3,3 +3,4 @@
 .grid{grid-template-columns:minmax(0,25fr) minmax(0,45fr) minmax(0,30fr)}
 .trade-row{flex-wrap:wrap;gap:4px;overflow-wrap:anywhere}.trade-row span{min-width:0;overflow-wrap:anywhere}
 .grid>*,.panel,.role{min-width:0}.role{overflow-wrap:anywhere}
+aside,p,.muted{min-width:0;overflow-wrap:anywhere;word-break:break-word}
