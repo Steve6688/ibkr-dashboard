@@ -1,40 +1,40 @@
 {
-  "generated_at": "2026-11-14T14:37:35+08:00",
+  "generated_at": "2026-11-14T14:39:07+08:00",
   "account": {
     "net_liq": {
       "value": 13282.88,
       "source": "site/snapshot.json",
-      "updated_at": "2026-11-14T14:30:43+08:00"
+      "updated_at": "2026-11-14T14:38:58+08:00"
     },
     "today_pnl": {
       "value": -99.91,
       "source": "site/snapshot.json",
-      "updated_at": "2026-11-14T14:30:43+08:00"
+      "updated_at": "2026-11-14T14:38:58+08:00"
     },
     "week_pnl": {
       "value": -416.33,
       "source": "site/daily-pnl.json 最近 5 个有效日",
-      "updated_at": "2026-11-14T14:30:43+08:00"
+      "updated_at": "2026-11-14T14:38:58+08:00"
     },
     "trade_count": {
       "value": 2,
       "source": "site/trades.json 已平仓策略往返；非零 realized_pnl 行",
-      "updated_at": "2026-11-14T14:37:35+08:00"
+      "updated_at": "2026-11-14T14:39:07+08:00"
     },
     "strategy_net": {
       "value": -25.301434999999998,
       "source": "site/trades.json 已平仓策略 realized_pnl（IB 已扣实际佣金）",
-      "updated_at": "2026-11-14T14:37:35+08:00"
+      "updated_at": "2026-11-14T14:39:07+08:00"
     },
     "wins": {
       "value": 0,
       "source": "site/trades.json 实际 realized_pnl",
-      "updated_at": "2026-11-14T14:37:35+08:00"
+      "updated_at": "2026-11-14T14:39:07+08:00"
     },
     "losses": {
       "value": 2,
       "source": "site/trades.json 实际 realized_pnl",
-      "updated_at": "2026-11-14T14:37:35+08:00"
+      "updated_at": "2026-11-14T14:39:07+08:00"
     }
   },
   "runner": {
@@ -157,22 +157,22 @@
       "扫描": {
         "value": 6,
         "source": "trade4_live.py PLANS 卡片总数",
-        "updated_at": "2026-11-14T14:37:35+08:00"
+        "updated_at": "2026-11-14T14:39:07+08:00"
       },
       "过滤": {
         "value": 0,
         "source": "PLANS 中未 disabled/voided 的卡片数；当前控制状态过滤后计数",
-        "updated_at": "2026-11-14T14:37:35+08:00"
+        "updated_at": "2026-11-14T14:39:07+08:00"
       },
       "评分": {
         "value": null,
         "source": "PLANS 无评分字段，故不编造",
-        "updated_at": "2026-11-14T14:37:35+08:00"
+        "updated_at": "2026-11-14T14:39:07+08:00"
       },
       "下单": {
         "value": 4,
         "source": "events.log 中 ENTRY SUBMITTED/FILLED，按 card/orderRef 去重",
-        "updated_at": "2026-11-14T14:37:35+08:00"
+        "updated_at": "2026-11-14T14:39:07+08:00"
       }
     }
   },
@@ -180,7 +180,7 @@
     "overall": {
       "value": null,
       "source": "未发现真实评分数据",
-      "updated_at": "2026-11-14T14:37:35+08:00"
+      "updated_at": "2026-11-14T14:39:07+08:00"
     },
     "components": []
   },
@@ -1234,7 +1234,7 @@
     "risk_used": {
       "value": 26.57,
       "source": "trade4 state.json pnl.realized",
-      "updated_at": "2026-11-14T14:37:35+08:00"
+      "updated_at": "2026-11-14T14:39:07+08:00"
     },
     "risk_limit": {
       "value": 60,
@@ -1244,12 +1244,12 @@
     "trades_done": {
       "value": 4,
       "source": "events.log ENTRY 事件按卡片去重",
-      "updated_at": "2026-11-14T14:37:35+08:00"
+      "updated_at": "2026-11-14T14:39:07+08:00"
     },
     "trade_limit": {
       "value": null,
       "source": "未发现真实每晚上限字段",
-      "updated_at": "2026-11-14T14:37:35+08:00"
+      "updated_at": "2026-11-14T14:39:07+08:00"
     }
   }
 }
