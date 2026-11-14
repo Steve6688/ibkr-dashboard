@@ -1,35 +1,40 @@
 {
-  "generated_at": "2026-11-14T14:12:37+08:00",
+  "generated_at": "2026-11-14T14:30:57+08:00",
   "account": {
     "net_liq": {
-      "value": 13332.35,
+      "value": 13282.88,
       "source": "site/snapshot.json",
-      "updated_at": "2026-11-14T06:01:12+08:00"
+      "updated_at": "2026-11-14T14:30:43+08:00"
     },
     "today_pnl": {
-      "value": -243.16,
+      "value": -99.91,
       "source": "site/snapshot.json",
-      "updated_at": "2026-11-14T06:01:12+08:00"
+      "updated_at": "2026-11-14T14:30:43+08:00"
     },
     "week_pnl": {
-      "value": -369.89,
+      "value": -416.33,
       "source": "site/daily-pnl.json 最近 5 个有效日",
-      "updated_at": "2026-11-13 22:00:58"
+      "updated_at": "2026-11-14T14:30:43+08:00"
     },
     "trade_count": {
-      "value": 5,
-      "source": "site/trades.json owner=team/orderRef 前缀",
-      "updated_at": "2026-11-14T14:12:37+08:00"
+      "value": 2,
+      "source": "site/trades.json 已平仓策略往返；非零 realized_pnl 行",
+      "updated_at": "2026-11-14T14:30:57+08:00"
+    },
+    "strategy_net": {
+      "value": -25.301434999999998,
+      "source": "site/trades.json 已平仓策略 realized_pnl（IB 已扣实际佣金）",
+      "updated_at": "2026-11-14T14:30:57+08:00"
     },
     "wins": {
       "value": 0,
       "source": "site/trades.json 实际 realized_pnl",
-      "updated_at": "2026-11-14T14:12:37+08:00"
+      "updated_at": "2026-11-14T14:30:57+08:00"
     },
     "losses": {
       "value": 2,
       "source": "site/trades.json 实际 realized_pnl",
-      "updated_at": "2026-11-14T14:12:37+08:00"
+      "updated_at": "2026-11-14T14:30:57+08:00"
     }
   },
   "runner": {
@@ -110,22 +115,22 @@
       "扫描": {
         "value": null,
         "source": "无真实计数",
-        "updated_at": "2026-11-14T14:12:37+08:00"
+        "updated_at": "2026-11-14T14:30:57+08:00"
       },
       "过滤": {
         "value": null,
         "source": "无真实计数",
-        "updated_at": "2026-11-14T14:12:37+08:00"
+        "updated_at": "2026-11-14T14:30:57+08:00"
       },
       "评分": {
         "value": null,
         "source": "无真实计数",
-        "updated_at": "2026-11-14T14:12:37+08:00"
+        "updated_at": "2026-11-14T14:30:57+08:00"
       },
       "下单": {
         "value": null,
         "source": "events.log 仅有事件而非计数",
-        "updated_at": "2026-11-14T14:12:37+08:00"
+        "updated_at": "2026-11-14T14:30:57+08:00"
       }
     }
   },
@@ -133,7 +138,7 @@
     "overall": {
       "value": null,
       "source": "未发现真实评分数据",
-      "updated_at": "2026-11-14T14:12:37+08:00"
+      "updated_at": "2026-11-14T14:30:57+08:00"
     },
     "components": []
   },
@@ -1187,22 +1192,22 @@
     "risk_used": {
       "value": null,
       "source": "无可核对真实统计",
-      "updated_at": "2026-11-14T14:12:37+08:00"
+      "updated_at": "2026-11-14T14:30:57+08:00"
     },
     "risk_limit": {
       "value": 60,
       "source": "snapshot.json risk.max_loss",
-      "updated_at": "2026-11-14T06:01:12+08:00"
+      "updated_at": "2026-11-14T14:30:43+08:00"
     },
     "trades_done": {
-      "value": 5,
-      "source": "site/trades.json owner=team/orderRef 前缀",
-      "updated_at": "2026-11-14T14:12:37+08:00"
+      "value": 2,
+      "source": "site/trades.json 已平仓策略往返",
+      "updated_at": "2026-11-14T14:30:57+08:00"
     },
     "trade_limit": {
       "value": null,
       "source": "无可核对真实上限",
-      "updated_at": "2026-11-14T14:12:37+08:00"
+      "updated_at": "2026-11-14T14:30:57+08:00"
     }
   }
 }
