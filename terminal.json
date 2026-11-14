@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14T14:30:57+08:00",
+  "generated_at": "2026-11-14T14:37:35+08:00",
   "account": {
     "net_liq": {
       "value": 13282.88,
@@ -19,22 +19,22 @@
     "trade_count": {
       "value": 2,
       "source": "site/trades.json 已平仓策略往返；非零 realized_pnl 行",
-      "updated_at": "2026-11-14T14:30:57+08:00"
+      "updated_at": "2026-11-14T14:37:35+08:00"
     },
     "strategy_net": {
       "value": -25.301434999999998,
       "source": "site/trades.json 已平仓策略 realized_pnl（IB 已扣实际佣金）",
-      "updated_at": "2026-11-14T14:30:57+08:00"
+      "updated_at": "2026-11-14T14:37:35+08:00"
     },
     "wins": {
       "value": 0,
       "source": "site/trades.json 实际 realized_pnl",
-      "updated_at": "2026-11-14T14:30:57+08:00"
+      "updated_at": "2026-11-14T14:37:35+08:00"
     },
     "losses": {
       "value": 2,
       "source": "site/trades.json 实际 realized_pnl",
-      "updated_at": "2026-11-14T14:30:57+08:00"
+      "updated_at": "2026-11-14T14:37:35+08:00"
     }
   },
   "runner": {
@@ -71,66 +71,108 @@
       {
         "code": "CSCORB",
         "symbol": "CSCO",
+        "side": "SHORT",
+        "entry": 97.45,
+        "stop": 98.6,
+        "tp1": 96.3,
+        "tp2": 95.6,
+        "risk": 29.9,
         "status": "voided",
-        "source": "trade4 state.json",
+        "disabled": true,
+        "source": "trade4_live.py PLANS + trade4 state.json",
         "updated_at": "2026-11-14 03:24:18"
       },
       {
         "code": "CSCOBD",
         "symbol": "CSCO",
+        "side": "SHORT",
+        "entry": 95.95,
+        "stop": 96.95,
+        "tp1": 94.95,
+        "tp2": 93.95,
+        "risk": 27.0,
         "status": "disabled",
-        "source": "trade4 state.json",
+        "disabled": true,
+        "source": "trade4_live.py PLANS + trade4 state.json",
         "updated_at": "2026-11-14 03:24:18"
       },
       {
         "code": "COIN",
         "symbol": "COIN",
+        "side": "SHORT",
+        "entry": 125.95,
+        "stop": 127.25,
+        "tp1": 124.65,
+        "tp2": 123.35,
+        "risk": 26.0,
         "status": "disabled",
-        "source": "trade4 state.json",
+        "disabled": true,
+        "source": "trade4_live.py PLANS + trade4 state.json",
         "updated_at": "2026-11-14 03:24:18"
       },
       {
         "code": "AVGOBD",
         "symbol": "AVGO",
+        "side": "SHORT",
+        "entry": 337.55,
+        "stop": 340.95,
+        "tp1": 334.15,
+        "tp2": 330.75,
+        "risk": 27.2,
         "status": "voided",
-        "source": "trade4 state.json",
+        "disabled": true,
+        "source": "trade4_live.py PLANS + trade4 state.json",
         "updated_at": "2026-11-14 03:24:18"
       },
       {
         "code": "METABO",
         "symbol": "META",
+        "side": "LONG",
+        "entry": 637.35,
+        "stop": 630.9,
+        "tp1": 643.8,
+        "tp2": 650.25,
+        "risk": 25.8,
         "status": "voided",
-        "source": "trade4 state.json",
+        "disabled": true,
+        "source": "trade4_live.py PLANS + trade4 state.json",
         "updated_at": "2026-11-14 03:24:18"
       },
       {
         "code": "METABO2",
         "symbol": "META",
+        "side": "LONG",
+        "entry": 639.3,
+        "stop": 633.0,
+        "tp1": 645.6,
+        "tp2": 651.9,
+        "risk": 25.2,
         "status": "voided",
-        "source": "trade4 state.json",
+        "disabled": true,
+        "source": "trade4_live.py PLANS + trade4 state.json",
         "updated_at": "2026-11-14 03:24:18"
       }
     ],
     "counts": {
       "扫描": {
-        "value": null,
-        "source": "无真实计数",
-        "updated_at": "2026-11-14T14:30:57+08:00"
+        "value": 6,
+        "source": "trade4_live.py PLANS 卡片总数",
+        "updated_at": "2026-11-14T14:37:35+08:00"
       },
       "过滤": {
-        "value": null,
-        "source": "无真实计数",
-        "updated_at": "2026-11-14T14:30:57+08:00"
+        "value": 0,
+        "source": "PLANS 中未 disabled/voided 的卡片数；当前控制状态过滤后计数",
+        "updated_at": "2026-11-14T14:37:35+08:00"
       },
       "评分": {
         "value": null,
-        "source": "无真实计数",
-        "updated_at": "2026-11-14T14:30:57+08:00"
+        "source": "PLANS 无评分字段，故不编造",
+        "updated_at": "2026-11-14T14:37:35+08:00"
       },
       "下单": {
-        "value": null,
-        "source": "events.log 仅有事件而非计数",
-        "updated_at": "2026-11-14T14:30:57+08:00"
+        "value": 4,
+        "source": "events.log 中 ENTRY SUBMITTED/FILLED，按 card/orderRef 去重",
+        "updated_at": "2026-11-14T14:37:35+08:00"
       }
     }
   },
@@ -138,7 +180,7 @@
     "overall": {
       "value": null,
       "source": "未发现真实评分数据",
-      "updated_at": "2026-11-14T14:30:57+08:00"
+      "updated_at": "2026-11-14T14:37:35+08:00"
     },
     "components": []
   },
@@ -1152,62 +1194,62 @@
   ],
   "rules": [
     {
-      "name": "单笔风险 $30",
-      "checked": false,
-      "source": "risk-config.json",
+      "name": "单笔风险 ≤ $30",
+      "checked": true,
+      "source": "trade4_live.py:18；最大 $29.90",
       "updated_at": "2026-11-14 03:24:18"
     },
     {
       "name": "夜间止损 -$60",
-      "checked": false,
-      "source": "snapshot.json risk.max_loss",
+      "checked": true,
+      "source": "trade4_live.py:253",
       "updated_at": "2026-11-14 03:24:18"
     },
     {
       "name": "04:00 后不开新仓",
-      "checked": null,
-      "source": "trade4_live.py / control.json 未核对",
+      "checked": true,
+      "source": "trade4_live.py:58",
       "updated_at": "2026-11-14 03:24:18"
     },
     {
-      "name": "收盘前 10 分钟清仓",
-      "checked": null,
-      "source": "trade4_live.py 未核对",
+      "name": "收盘前 10 分钟清仓（04:50）",
+      "checked": true,
+      "source": "trade4_live.py:60",
       "updated_at": "2026-11-14 03:24:18"
     },
     {
-      "name": "不碰 QQQ/GOOGL/GOOG 和用户自己的持仓",
-      "checked": null,
-      "source": "工作台配置未核对",
+      "name": "禁止 QQQ/GOOGL/GOOG；只管策略 orderRef",
+      "checked": true,
+      "source": "trade4_live.py:16；trade4_live.py:12",
       "updated_at": "2026-11-14 03:24:18"
     },
     {
       "name": "偏离超过 0.2R 不追",
-      "checked": null,
-      "source": "trade4_live.py 未核对",
+      "checked": true,
+      "source": "trade4_live.py:23",
       "updated_at": "2026-11-14 03:24:18"
     }
   ],
   "tonight": {
     "risk_used": {
-      "value": null,
-      "source": "无可核对真实统计",
-      "updated_at": "2026-11-14T14:30:57+08:00"
+      "value": 26.57,
+      "source": "trade4 state.json pnl.realized",
+      "updated_at": "2026-11-14T14:37:35+08:00"
     },
     "risk_limit": {
       "value": 60,
-      "source": "snapshot.json risk.max_loss",
-      "updated_at": "2026-11-14T14:30:43+08:00"
+      "source": "trade4_live.py loss_limit_reached limit=60",
+      "updated_at": "2026-11-14 03:24:18"
     },
     "trades_done": {
-      "value": 2,
-      "source": "site/trades.json 已平仓策略往返",
-      "updated_at": "2026-11-14T14:30:57+08:00"
+      "value": 4,
+      "source": "events.log ENTRY 事件按卡片去重",
+      "updated_at": "2026-11-14T14:37:35+08:00"
     },
     "trade_limit": {
       "value": null,
-      "source": "无可核对真实上限",
-      "updated_at": "2026-11-14T14:30:57+08:00"
+      "source": "未发现真实每晚上限字段",
+      "updated_at": "2026-11-14T14:37:35+08:00"
     }
   }
 }
